@@ -1,0 +1,21 @@
+<h1>Listing betausers</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @betausers.each do |betauser| %>
+  <tr>
+    <td><%= link_to 'Show', betauser %></td>
+    <td><%= link_to 'Edit', edit_betauser_path(betauser) %></td>
+    <td><%= link_to 'Destroy', betauser, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Betauser', new_betauser_path %>

@@ -1,0 +1,128 @@
+
+<script type="text/javascript">
+$(document).ready( function() {
+
+
+        load_map();
+    load();
+});
+
+var poly, map;
+var markers = [];
+var path = new google.maps.MVCArray;
+var polygons = new Array();
+var dumbo = new Array();
+var paths = new Array();
+
+var colorDumpList = new Array();
+colorDumpList.push("#FFD24D");
+colorDumpList.push("#DDFF00");
+colorDumpList.push("#00FFDD");
+colorDumpList.push("#FF00DD");
+colorDumpList.push("#FFDDAA");
+colorDumpList.push("#AADDFF");
+colorDumpList.push("#00DDFF");
+
+function load_map() {
+  var lat = 0;
+  var lng = 0;
+  var center;
+
+
+  var tableID = 2036527;
+  var geocoder = new google.maps.Geocoder();
+   var uluru = new google.maps.LatLng(37.8667186, -122.2533931);
+  map = new google.maps.Map(document.getElementById('mapview_map'), {
+    center: uluru,
+    zoom: 14,
+   mapTypeId: google.maps.MapTypeId.SATELLITE
+  });
+  var i = 0;
+  <% @areas.each do |coordinate_list| %>
+    var newPath = new google.maps.MVCArray;
+    <% coordinate_list.each do |item| %>
+    var lat = <%= h(item[0]) %>
+    var lng =<%= h(item[1]) %>
+      newPath.insertAt(newPath.length, new google.maps.LatLng(lat,lng));
+    <% end %>
+    poly = new google.maps.Polygon({
+        strokeWeight: 3,
+        fillColor: colorDumpList[i]
+      });
+      polygons.push(poly);
+      poly.setMap(map);
+      poly.setPaths(new google.maps.MVCArray([newPath]));
+      i = i + 1;
+  <% end %>
+
+}
+function addPoint(event) {
+
+}
+
+function getParameter()
+{
+
+}
+
+function load()
+{
+
+}
+
+function select(input)
+{
+	$.post("submit", {taggedArea: input.name})
+	
+}
+
+function toggle(boxName)
+{
+  if(boxName.checked == true)
+  {
+    polygons[boxName.value].setMap(map);
+  }
+  else
+  {
+    polygons[boxName.value].setMap(null);
+  }
+}
+
+  function unloadAll(len){
+  
+    for (i = 0; i < len; i++) 
+{
+  var dummy = document.getElementById("list" + i.toString());
+  dummy.checked = false;
+  toggle(dummy);
+}
+  }
+  function loadAll(len){
+
+    for (i = 0; i < len; i++)
+{
+     var dummy = document.getElementById("list" + i.toString());
+	  dummy.checked = true;
+	 toggle(dummy);
+}
+  }
+
+</script>
+<div id='content'>
+<div id='mapview_map'></div>
+
+
+<b>Your List of Available Similar Maps</b><br>
+<% TaggedArea.all.each_with_index do |map, index| %>
+<input type="checkbox" name="list" id='list<%=h index %>' onClick="toggle(this)" value="<%=h index %>" checked /> <%=h map.title %> 
+<input type="button" value="pick me!" name="<%=h map.id %>" id="pick<%=h index %>" onClick="select(this)">
+<br>
+<% end %>
+<br>
+<input type="button" name="CheckAll" value="Check All"
+onClick="loadAll(<%=h TaggedArea.all.size %>)">
+<input type="button" name="UnCheckAll" value="Uncheck All"
+onClick="unloadAll(<%=h TaggedArea.all.size %>)">
+<br>
+
+</div>

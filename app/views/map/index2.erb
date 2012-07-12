@@ -1,0 +1,145 @@
+
+
+	<script src="assets/js/less-1.3.0.min.js"></script>
+		<script language="javascript">
+function getElementsByClassName(node,classname) {
+  if (node.getElementsByClassName) { // use native implementation if available
+    return node.getElementsByClassName(classname);
+  } else {
+    return (function getElementsByClass(searchClass,node) {
+        if ( node == null )
+          node = document;
+        var classElements = [],
+            els = node.getElementsByTagName("*"),
+            elsLen = els.length,
+            pattern = new RegExp("(^|\\s)"+searchClass+"(\\s|$)"), i, j;
+
+        for (i = 0, j = 0; i < elsLen; i++) {
+          if ( pattern.test(els[i].className) ) {
+              classElements[j] = els[i];
+              j++;
+          }
+        }
+        return classElements;
+    })(classname, node);
+  }
+}
+ function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+function toggle_visibility(id) {
+
+    if(document.getElementById(id).style.display == 'block') {
+       document.getElementById(id).style.display = 'none';
+     } else {
+       document.getElementById(id).style.display = 'block';
+     }
+  }
+
+
+</script>
+</head>
+<body>
+
+		<div id="content">
+		<br>
+		<img src="../oldfrontend/dummy_listmapswitch.png" align="right" />
+		<br><br>
+			<div class="row">
+				<div class="span2">
+					<p>
+						<li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
+							<ul class="filter_elements" style="display:block;"  id="fe1">
+								<li>
+								Questions
+								</li><li>
+								Challenges
+								</li><li>
+								Events
+								</li>
+							</ul>			
+						</li>
+						
+					</p>
+					<ul id="filter_menus">				
+						<li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
+							<ul class="filter_elements" style="display:block;"  id="fe1">
+								<li>
+								Questions
+								</li><li>
+								Challenges
+								</li><li>
+								Events
+								</li>
+							</ul>			
+						</li>
+						
+						<li>
+							<a href="javascript:;" onmousedown="toggle_visibility('fe2');">Categories</a><br>
+							<ul class="filter_elements" style="display:block;" id="fe2">						
+								<li class="checkbox">  
+								<input type="checkbox"> Dignity and Rights 
+								</li>
+								<li class="checkbox">  
+								<input type="checkbox"> Education 
+								</li>  
+								<li class="checkbox">  
+								<input type="checkbox"> Health & Safety
+								</li>  
+								<li class="checkbox">  
+								<input type="checkbox"> Public Space
+								</li>  
+								<li class="checkbox">  
+								<input type="checkbox"> Transportation
+								</li>  					
+							</ul>
+						</li>	
+						<li><a href="javascript:;" onmousedown="toggle_visibility('fe3');">Popular</a><br>
+							<ul class="filter_elements" style="display:block;"  id="fe3">
+								<li>
+								Placeholder
+								</li><li>
+								Placeholder
+								</li><li>
+								Placeholder
+								</li>
+							</ul>			
+						</li>
+						<li><a href="javascript:;" onmousedown="toggle_visibility('fe4');">Personal</a><br>
+							<ul class="filter_elements" style="display:block;"  id="fe4">
+								<li>
+								Placeholder
+								</li><li>
+								Placeholder
+								</li><li>
+								Placeholder
+								</li>
+							</ul>			
+						</li>
+						<li><a href="javascript:;" onmousedown="toggle_visibility('fe5');">Tagged Areas</a><br>
+							<ul class="filter_elements" style="display:block;"  id="fe5">
+								<li>
+								Placeholder
+								</li><li>
+								Placeholder
+								</li><li>
+								Placeholder
+								</li>
+							</ul>			
+						</li>
+					</ul>
+				</div>
+				<img src="http://placehold.it/828x635" class="span10"/>
+			
+			</div>
+		
+	
+				
+	</div>
+	
+</body>
+

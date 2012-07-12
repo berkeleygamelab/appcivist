@@ -1,0 +1,27 @@
+<% content_for :head do %>
+<%= javascript_include_tag 'jquery-1.2.6.min', 'jquery.ui-1.6rc2/ui/minified/ui.core.min', 'jquery.ui-1.6rc2/ui/minified/ui.autocomplete.min' %>
+<%= stylesheet_link_tag 'jquery.ui-1.6rc2/themes/default/ui.all' %>
+<script type="text/javascript">
+$(document).ready(function(){
+jQuery.ajaxSetup({
+'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+$("#q").autocomplete( {
+url : "ugh",
+mustMatch : false
+}
+);
+$("#q").autocomplete('result', function(event, data, formatted) {
+if (data)
+document.location.href = '/categories/' + data[1];
+});
+});
+</script>
+
+<% end %>
+There is
+<% form_tag 'ugh', :method => 'get' do %>
+<%= text_field_tag :q, params[:q] %>
+<%= submit_tag "Locate category", :name => nil %>
+<% end %>
+UGHHHHHH

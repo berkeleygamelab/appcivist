@@ -1,0 +1,30 @@
+<style type="text/css">
+#content {
+	background-image: url("../../images/splash_box.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 480px;
+	width: 100%;
+	text-align: center;
+}
+#message_form {
+	color: #DDDDDD;
+	line-height:2em;
+	padding-top:20px;
+}
+#prev_message {
+	width:300px;
+	margin:auto;
+}
+</style>
+<div id="content">
+<div id='message_form'>
+<form action= "/messages/create">
+  Subject: <input type="text" name="subject" size="35" value=""/><br />
+  Body: <textarea name="body" rows="5" cols="35"> </textarea><br />
+  Send To: <input type ="text" name="sendTo" value="<%=h User.find(@to).login %>" size="35"><br />
+  <input type="submit" value="Send Message"/>
+</form>
+<br>
+</div>
+</div>

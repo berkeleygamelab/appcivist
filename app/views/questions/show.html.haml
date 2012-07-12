@@ -1,0 +1,48 @@
+.row
+  .span7
+      #contentView_leftPane
+        %h1
+          = @question.title
+        %ul.nav.nav-pills
+          %li
+            = link_to 'Subscribe', '#'
+          %li
+            = link_to 'Generate QR Code', '#'
+          %li
+            = link_to 'Email', '#'
+        = image_tag 'dummy_carousel.png', :class => 'question_picture'
+        @question.content
+        #contentView_responses
+          %h2 Responses
+          .response_sorter
+            = link_to 'hot', 'javascript:;'
+            &nbsp;|$nbsp;
+            = link_to 'new', 'javascript:;'
+            &nbsp;|&nbsp;
+            = link_to 'controversial', 'javascript:;'
+            &nbsp;|&nbsp;
+          %dl.response_list
+            %dt
+              = link_to image_tag("upvote.png"), :action => "show", :controller => "questions", :id => 1 
+              1
+              = link_to image_tag("upvote.png"), :action => "show", :controller => "questions", :id => 1
+              = render 'response_tree'
+          .span6            
+            = render :partial => 'question_response_new'
+  .span5
+    #contentView_rightPane      
+      #contentView_op
+        %h3 Question By:
+        .row
+          = image_tag 'http://placehold.it/50x50', :class => 'span1 thumbnail'
+          .span3
+            %dl
+              %dt
+                = @user.login
+              %dd
+                = link_to 'Send private message', 'javascript:;'
+      %h3 Related Questions in
+        .span2
+          = text_field_tag 'question_location', :placeholder => 'Berkeley, CA'
+                               
+      

@@ -1,0 +1,102 @@
+
+<script type="text/javascript">
+$(document).ready( function() {
+
+
+				load_map();
+		
+});
+
+var poly, map;
+var markers = [];
+var path = new google.maps.MVCArray;
+var dumbo = new Array();
+function load_map() {
+	var lat = 0;
+	var lng = 0;
+	var center;
+
+	
+	var tableID = 2036527;
+	var geocoder = new google.maps.Geocoder();
+	 var uluru = new google.maps.LatLng(-25.344, 131.036);
+	map = new google.maps.Map(document.getElementById('mapview_map'), {
+	  center: uluru,
+	  zoom: 12,
+   mapTypeId: google.maps.MapTypeId.SATELLITE
+	});
+	
+    poly = new google.maps.Polygon({
+      strokeWeight: 3,
+      fillColor: '#5555FF'
+    });
+    poly.setMap(map);
+    poly.setPaths(new google.maps.MVCArray([path]));
+
+    google.maps.event.addListener(map, 'click', addPoint);		
+}
+function addPoint(event) {
+  path.insertAt(path.length, event.latLng);
+
+  var marker = new google.maps.Marker({
+    position: event.latLng,
+    map: map,
+    draggable: true
+  });
+  markers.push(marker);
+  dumbo.push(event.latLng);
+  marker.setTitle("#" + path.length);
+
+  google.maps.event.addListener(marker, 'click', function() {
+    marker.setMap(null);
+    for (var i = 0, I = markers.length; i < I && markers[i] != marker; ++i);
+    markers.splice(i, 1);
+    path.removeAt(i);
+    dumbo.splice(i, 1);
+    }
+  );
+
+  google.maps.event.addListener(marker, 'dragend', function() {
+    for (var i = 0, I = markers.length; i < I && markers[i] != marker; ++i);
+    path.setAt(i, marker.getPosition());
+    dumbo[i] = marker.getPosition();
+    }
+  );
+}
+
+function getParameter()
+{
+	
+        var points = poly.getPath();
+        var len = points.getLength();
+        var stuff = new Array(len);
+	for(var i = 0; i < len; i++)
+	{
+           stuff[i] = path.getArray()[i].toString();
+        }
+        
+	return stuff;
+}
+
+function load()
+{
+	var words = $('#keyword').attr('value');
+	var stuff = getParameter();
+
+	$.post("draw", { coordinates: stuff, taggedArea: words},
+   function(data) {
+      alert(data);
+   });
+}
+
+
+</script>
+<div id='content'>
+<div id='mapview_map'></div>
+
+Insert Info <input type='text' class='textbox' id='keyword' size='20'>
+<button id='myButton' name="submit" onclick="load()">Submit Given Map</button>
+
+
+
+</div>

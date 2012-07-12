@@ -1,0 +1,40 @@
+
+<script type="text/javascript">
+$(document).ready( function() {
+var input = document.getElementsByName('user[location]')[0];
+var autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+</script>
+
+<%= form_for @user, :action => :create, :controller => :users do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<label>Your desired username</label>
+   <%= f.text_field :login, :size => 18, :id=>'username_input', :class=>'span3', :placerholder=>'username' %>
+  <br>
+   <label>Your email address</label>
+   <%= f.email_field :email, :size => 18, :id=>'email_input', :class=>'span3', :placeholder => 'email' %>
+     <label>Your password</label>
+   <%= f.password_field :password, :size => 18, :id=>'password_password', :class=>'span3', :placeholder => 'password' %>
+ <label>Confirm password</label>
+   <%= f.password_field :password_confirmation, :size => 18, :id=>'re_password_password', :class=>'span3', :placeholder =>'re-enter password' %>
+    <label>Default location</label>
+   <%= f.text_field :location, :size => 18, :id=>'location_input', :class=>'span3', :placeholder=>'enter location' %>
+<label>Profile Picture</label>
+   <%= f.file_field :upload, :id=> 'upload_input', :class=>'span3', :placeholder=>'' %>
+<br>
+<br>
+
+<br>
+      <%= submit_tag 'register', :class => 'btn' %>
+
+
+<% end %>

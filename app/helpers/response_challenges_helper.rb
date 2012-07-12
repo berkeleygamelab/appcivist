@@ -1,0 +1,2 @@
+module ResponseChallengesHelper
+end

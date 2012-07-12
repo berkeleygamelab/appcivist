@@ -1,0 +1,161 @@
+<script type="text/javascript">
+  var map;
+  var autocomplete;
+  var myBoxValue = "Berkeley, CA";
+  var boxes = new Array();
+  var autocomplete2;
+    var myOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+  var defaultBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(-33.8902, 151.1759),
+  new google.maps.LatLng(-33.8474, 151.2631));
+
+  var input = document.getElementById('event_location');
+  var options = {
+    bounds: defaultBounds,
+    types: ['geocode']
+  };
+
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  if ($('#event_location').val() != '') {
+    center_map(map);
+  }
+
+  $('#event_location').blur( function() {
+    center_map(map);
+  });
+
+});
+
+function center_map(map) {
+  var geocoder = new google.maps.Geocoder();
+  var address = $.trim(address = $('#event_location').val().replace(/[\t\n\r]/gi, ""));
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+      $('#event_lat').attr('value', results[0].geometry.location.lat());
+      $('#event_lng').attr('value', results[0].geometry.location.lng());
+        }
+  });
+$(document).ready( function() {
+ boxes = new Array();
+
+ boxes.push('mainBox');
+
+  boxes.push('box1');
+  $('mainBox').bind('onchange', setBoxes(document.getElementById('mainBox').value));
+  $('box1').bind('onchange', setBoxes(document.getElementById('box1').value));
+  $('mainBox').bind('onpropertychange', setBoxes(document.getElementById('mainBox').value));
+  $('box1').bind('onpropertychange', setBoxes(document.getElementById('box1').value));
+
+    var myOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+    map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+  var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-33.8902, 151.1759),
+    new google.maps.LatLng(-33.8474, 151.2631));
+
+  var input = document.getElementById('event_location');
+  var options = {
+    bounds: defaultBounds,
+    types: ['geocode']
+  };
+  autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+  var addAuto = new google.maps.places.Autocomplete(document.getElementById('mainBox'));
+  var auto2 = new google.maps.places.Autocomplete(document.getElementById('box1'));
+  if ($('#event_location').val() != '') {
+    center_map(map);
+  }
+
+  $('#event_location').blur( function() {
+    center_map(map);
+  });
+
+});
+
+ function setBoxes(newVal)
+{
+   var temp = new Array();
+
+  for(var i=0; i<2; i++);
+   {
+    var a = boxes.pop();
+    temp.push(a);
+    document.getElementById(a).value = newVal;
+    }
+
+ for(var k=0; k<2; k++);
+   {
+    var a = temp.pop();
+    boxes.push(a);
+    }
+
+}
+
+function adjust_location(box)
+{
+
+}
+
+function center_map(map) {
+  var geocoder = new google.maps.Geocoder();
+  var address = $.trim(address = $('#event_location').val().replace(/[\t\n\r]/gi, ""));
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+      $('#event_lat').attr('value', results[0].geometry.location.lat());
+      $('#event_lng').attr('value', results[0].geometry.location.lng());
+        }
+  });
+}
+
+</script>
+  <div id="container">
+
+    <div id="content">
+      <br>
+      <h1>Organize an Event</h1>
+      <br><br>
+        <div class="row span6 question_form">
+            <h3>I want to ask about...</h3><br>
+
+        <%= render 'form' %>
+        </div>
+        <div class="span5" style="width:340px;">
+            <h3> Sample events asked in <input name="box1" id="box1" type="text" class="span2" placeholder="Berkeley, CA"/> </h3>
+          <ul class="related_list unstyled">
+              <% @samples.each do |sample| %>
+              <li class="row">
+                <a href="#" >
+                <img src="http://placehold.it/98x50" class="span2" align="left" />
+                </a>
+                <div class="span3">
+                <h4><%= sample.title %></h4>
+               Description: <%= sample.description %>
+                </div>
+              </li>
+        <% end %>
+          </ul>
+        </div>
+
+    </div>
+  </div>
+

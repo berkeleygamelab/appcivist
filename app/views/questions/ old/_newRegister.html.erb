@@ -1,0 +1,58 @@
+       <%= form_for @question, :action => :create, :controller => :questions do |f| %>
+     <% if @question.errors.any? %>
+       <div id="error_explanation">
+         <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+         <ul>
+         <% @question.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+         </ul>
+       </div>
+     <% end %>
+     <p>
+       <%= f.hidden_field :lat %>
+       <%= f.hidden_field :lng %>
+       <%= f.label :title %> <font size='1px'>(Character Limit: 255)</font>
+       <br>
+       <%= f.text_area :title, :rows=>2 %>
+     </p>
+     <p>
+       <%= f.label :location %> <font size='1px'>(Character Limit: 100)</font>
+       <br>
+       <%= f.text_area :location, :rows=>1, :placeholder=>"" %>
+       <br>
+       <br>
+       <br>
+       <div id="map_canvas"></div>
+     </p>
+     <p>
+       <%= f.label :description %> <font size='1px'>(Character Limit: 800)</font>
+       <br>
+       <%= f.text_area :description, :rows=>3 %>
+     </p>
+     <p>
+       <%= f.label "Upload a picture:" %>
+       <%= f.file_field :picture %>
+     </p>
+     <p>
+       <%= f.check_box :anonymous %>
+       <%= f.label 'Post anonymously' %>
+     </p>
+	<%= submit_tag 'Create Your Question', :class => 'btn' %>
+     <p>
+       <%= f.label 'Categories' %>
+       <br>
+
+		<%= form_tag("/categories", :method => 'post') do %>
+	 <% autocomplete_field_tag 'category', '', questions_autocomplete_category_name_path, :size => 75 %>
+		<% end %>
+		<%= form_tag("/categories", :method => 'post') do %>
+	 <% autocomplete_field_tag 'category 1', '', questions_autocomplete_category_name_path, :size => 75 %>
+		<% end %>
+		<%= form_tag("/categories", :method => 'post') do %>
+	 <% autocomplete_field_tag 'category 2', '', questions_autocomplete_category_name_path, :size => 75 %>
+		<% end %>
+     </p>
+
+<br>  <br>  <br>  <br>  <br>
+   <% end %>

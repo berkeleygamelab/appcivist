@@ -1,0 +1,113 @@
+:javascript
+  var map;
+  var autocomplete;
+  var myBoxValue = "Berkeley, CA";
+  var boxes;
+  var autocomplete2;
+  $(document).ready( function() {
+   boxes = new Array();
+  
+   boxes.push('mainBox');
+  
+    boxes.push('box1');
+    $('mainBox').bind('onchange', setBoxes(document.getElementById('mainBox').value));
+    $('box1').bind('onchange', setBoxes(document.getElementById('box1').value));
+    $('mainBox').bind('onpropertychange', setBoxes(document.getElementById('mainBox').value));
+    $('box1').bind('onpropertychange', setBoxes(document.getElementById('box1').value));
+  
+      var myOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+      map = new google.maps.Map(document.getElementById('form_map_canvas'), myOptions);
+  
+    var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-33.8902, 151.1759),
+      new google.maps.LatLng(-33.8474, 151.2631));
+  
+    var input = document.getElementById('question_location');
+    var options = {
+      bounds: defaultBounds,
+      types: ['geocode']
+    };
+    autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
+    var addAuto = new google.maps.places.Autocomplete(document.getElementById('mainBox'));
+    var auto2 = new google.maps.places.Autocomplete(document.getElementById('box1'));
+    if ($('#question_location').val() != '') {
+      center_map(map);
+    }
+  
+    $('#question_location').blur( function() {
+      center_map(map);
+    });
+  
+  });
+  
+   function setBoxes(newVal)
+  {
+     var temp = new Array();
+  
+    for(var i=0; i<2; i++);
+     {
+      var a = boxes.pop();
+      temp.push(a);
+      document.getElementById(a).value = newVal;
+      }
+  
+   for(var k=0; k<2; k++);
+     {
+      var a = temp.pop();
+      boxes.push(a);
+      }
+  
+  }
+  
+  function adjust_location(box)
+  {
+  
+  }
+  
+  function center_map(map) {
+    var geocoder = new google.maps.Geocoder();
+    var address = $.trim(address = $('#question_location').val().replace(/[\t\n\r]/gi, ""));
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+        $('#question_lat').attr('value', results[0].geometry.location.lat());
+        $('#question_lng').attr('value', results[0].geometry.location.lng());
+          }
+    });
+  }
+
+#container
+  #question_content
+    .row
+      .span12
+        .question_title_banner
+          %h1 Ask a Question
+    .row
+      .span7
+        .question_form
+          %h3.question_form_banner I want to ask about...
+          .question_form_content          
+            = render :partial => 'question_create'
+      .span5
+        %h3 Sample questions asked in <input name="box1" id="box1" type="text" class="span2" placeholder="Berkeley, CA"/>
+        %ul.related_list.unstyled
+          - @samples.each do |sample|
+            %li
+              .row
+                <a href="#" >
+                <img src="http://placehold.it/98x50" class="span2" align="left" />
+                </a>
+                .span3
+                  %h4 
+                    = sample.title
+                  Description: 
+                  = sample.description 

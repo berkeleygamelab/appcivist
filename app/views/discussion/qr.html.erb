@@ -1,0 +1,21 @@
+<style type="text/css">
+#title {
+	padding-left: 35px;
+	text-align: center;
+	width: 225px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready( function() {
+	$('#qr').attr('src', 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<%=@response["url"]%>&choe=UTF-8');
+});
+</script>
+<style type="text/css">
+html {
+	background-image: none;
+}
+</style>
+<img id='qr' src=''>
+<div id='title'>
+<%= @response['title'] %>
+</div>

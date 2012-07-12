@@ -1,0 +1,76 @@
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
+      type="text/javascript"></script>
+<script type="text/javascript">
+$.fn.center = function (top_offset) {
+	window_width =  $(window).width() > 500 ? $(window).width() : 500;
+    this.css("position","absolute");
+	this.css("top", ($('.splash_box').position().top + top_offset - 20)  + 'px');
+    this.css("left", ((window_width - this.outerWidth()) / 2) + $(window).scrollLeft() + "px");
+    return this;
+}
+$(window).load(function() {
+	center_elements();
+	
+	$(window).resize(function() {
+		center_elements();
+	});
+	
+	function center_elements() {
+		window_height =  $(window).height() > 700 ? $(window).height() : 700;
+		window_width =  $(window).width() > 500 ? $(window).width() : 500;
+		$('.splash_box').center();
+	   	$('.splash_box').css("top", ((window_height - $('.splash_box').outerHeight()) / 2) + "px");
+		$('.username').center(90);
+		$('.email').center(200);
+		$('.password').center(310);
+		$('.re_password').center(420);
+		$('.location').center(530)
+		$('#links').center(650);
+		
+		$('#username_input').center(120);
+		$('#email_input').center(230);
+		$('#password_input').center(340);
+		$('#re_password_input').center(450);
+		$('#password_password').center(340);
+		$('#re_password_password').center(450);
+		$('#password_input').center(340);
+		$('#re_password_input').center(450);
+		$('#location_input').center(560);
+		
+		$('#username_prompt').center(80);
+		$('#username_prompt').css("left", ($('#username_input').position().left) + "px");
+		$('#email_prompt').center(190);
+		$('#email_prompt').css("left", ($('#email_input').position().left) + "px");
+		$('#password_prompt').center(300);
+		$('#password_prompt').css("left", ($('#password_password').position().left) + "px");
+		$('#re_password_prompt').center(410);
+		$('#re_password_prompt').css("left", ($('#re_password_password').position().left) + "px");
+		$('#location_prompt').center(520);
+		$('#location_prompt').css("left", ($('#location_input').position().left) + "px");
+	}
+	
+	var defaultBounds = new google.maps.LatLngBounds(
+	  new google.maps.LatLng(-33.8902, 151.1759),
+	  new google.maps.LatLng(-33.8474, 151.2631));
+
+	var input = document.getElementById('location_input');
+	var options = {
+	  bounds: defaultBounds,
+	  types: ['geocode']
+	};
+
+	autocomplete = new google.maps.places.Autocomplete(input, options);
+ });
+</script>
+<%= image_tag "../images/splash_box.png", :class=>'splash_box' %>
+
+<div class="labels">
+	<div id="username_prompt">Enter a User ID</div>
+	<div id="email_prompt">Email Address</div>
+	<div id="password_prompt">Password</div>
+	<div id="re_password_prompt">Re-enter Password</div>
+	<div id="location_prompt">Location</div>
+</div>
+
+<%= render 'form' %>
+

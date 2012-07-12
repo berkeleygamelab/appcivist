@@ -1,0 +1,4 @@
+class AddColumnToResponseTemplates < ActiveRecord::Migration
+  def change
+  end
+end

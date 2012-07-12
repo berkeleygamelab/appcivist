@@ -1,0 +1,9 @@
+class CreateCategoryholders < ActiveRecord::Migration
+  def change
+    create_table :categoryholders do |t|
+      t.integer "item_template_id"
+      t.integer "user_id"xs
+      t.timestamps
+    end
+  end
+end

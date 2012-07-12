@@ -1,0 +1,45 @@
+<h1>Mailbox#show</h1>
+<p>Find me in app/views/mailbox/inbox.html.erb</p>
+<p>Hey look gaiz! </p>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+	<td>
+	
+		MESSAGES!
+	</td>
+	<tr>
+		<%=h @messages.length %>
+		</tr>
+
+  </tr>
+
+<% @messages.each do |x| %>
+  <tr>
+	<td>
+	 Subject: <%=h x.message.subject %>
+	</td>
+	
+	<td>
+	 Body:	<%=h x.message.body %>
+	</td>
+	
+	<td>
+	User:	<%=h x.user.login %>
+	</td>	
+	<td>
+		BLEGHHHH
+		<%= link_to 'New post', 'display' %>
+	</td>
+
+
+
+
+  </tr>
+<% end %>
+</table>

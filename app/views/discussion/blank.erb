@@ -1,0 +1,73 @@
+<%if @error %>
+	ERROR DONT HAVE A LOCATION
+
+<%else %>
+	welcome! you must have logged in at some point
+   
+	Insert a Handy Dandy Location! <input type='text' class='textbox' id='location' size='20'>
+	<br>
+	Category 1 <input type='text' class='textbox' id='category1' size='20'>
+	<br>
+	Category 2 <input type='text' class='textbox' id='category2' size='20'>
+	<br>
+	Category 3 <input type='text' class='textbox' id='category3' size='20'>
+	<br>
+	Keyword Search <input type='text' class='textbox' id='keyword' size='20'>
+	<br>
+	Date Before <input type='datetime' id='before' size='20'>
+	<br>
+	Date After <input type='datetime' id='after' size='20'>
+	<br>
+	What is gonna do with this <input type='checkbox' class='textbox' id='keyword' size='20'>
+	<button id='myButton' name="submit" onclick="load()">Submit Given Map</button>
+
+<% end %>
+
+<script type="text/javascript">
+function load()
+{
+	var words = $('#myButton').attr('value');
+	var stuff = getParameter();
+
+	$.post("draw", { coordinates: stuff, taggedArea: words},
+   function(data) {
+      alert(data);
+   });
+}
+<script language="javascript">
+
+ function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+function toggle_visibility(id) {
+
+    if(document.getElementById(id).style.display == 'block') {
+       document.getElementById(id).style.display = 'none';
+     } else {
+       document.getElementById(id).style.display = 'block';
+     }
+  }
+
+function getAjaxSet()
+{
+	var params = {};
+	params['']
+	return params;
+}
+function switch_location(item)
+{
+	var stuff = getAjaxSet();
+	
+}
+
+</script>
+
+
+
+</script>
+
+

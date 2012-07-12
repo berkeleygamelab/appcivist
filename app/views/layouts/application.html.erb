@@ -1,0 +1,38 @@
+
+<html>
+<head>
+  <title>City Sandbox</title>
+  <%= stylesheet_link_tag "application.css" %>
+  <%= stylesheet_link_tag '../stylesheets/jquery-ui-1.8.18.custom.css' %>
+  <%= stylesheet_link_tag    '../stylesheets/fancybox.css' %>
+  <%= javascript_include_tag "application.js" %>
+  <%= javascript_include_tag "textbox.js" %>
+  <%= javascript_include_tag "stickysidebar.js" %>
+  <%= javascript_include_tag "tabs.js" %>
+  <%= javascript_include_tag "fancybox.js" %>
+
+  <%= javascript_include_tag "jquery_ujs.js" %>
+  <%= javascript_include_tag "jquery-1.7.1.min.js" %>
+  <%= javascript_include_tag "jquery-ui-1.8.18.custom.min.js" %>
+  <%= javascript_include_tag "autocomplete-rails.js" %>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/ui-lightness/jquery-ui.css" %>
+
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places" type="text/javascript"></script>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+ 
+</head>
+
+<body class="<%= params[:controller] %>">
+	<div id="container">
+		<%= render :partial => 'layouts/navbar' %>
+		<div id ="content">
+	  		<%= yield %>
+		
+		</div>
+	</div>
+ </body>
+
+  <%= render :partial => 'layouts/footer', :class=>'footer' %>
+
+</html>

@@ -1,0 +1,12 @@
+class CategoriesController < ApplicationController
+def index
+@categories = Category.find(:all,:conditions => ['name LIKE ?', "#{params[:q]}%"],  :limit => 5, :order => 'name')
+respond_to do |format|
+format.html # index.html.erb
+format.xml  { render :xml => @categories }
+format.js # index.js.erb
+format.json { render :json => @categories }
+end
+end
+
+end

@@ -1,0 +1,43 @@
+<p>Hey look gaiz! </p>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+	<td>
+	
+		MESSAGES!
+	</td>
+	<tr>
+		<%=h @messages.length %>
+		</tr>
+		<tr>
+			First message <%=h @messages[0].subject%>
+			</tr>
+  </tr>
+
+<% @messages.each do |x| %>
+  <tr>
+	<td>
+	 Subject: <%=h x.subject %>
+	</td>
+	
+	<td>
+	 Body:	<%=h x.body %>
+	</td>
+	
+	<td>
+	User:	<%=h x.user.login %>
+	</td>	
+
+
+
+
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Send a message', 'sent/new' %>

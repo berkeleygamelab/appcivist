@@ -1,0 +1,450 @@
+<script type="text/javascript">
+$(document).ready( function() {	
+	$('#tabs ul').idTabs();
+	
+	var map;
+    var myOptions = {
+    	zoom: 14,
+    	center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+    	mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+   	map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+    var geocoder = new google.maps.Geocoder();
+	var address = $.trim(address = $('#challenge_location').val().replace(/[\t\n\r]/gi, ""));
+	    geocoder.geocode( { 'address': address}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        map.setCenter(results[0].geometry.location);
+	        var marker = new google.maps.Marker({
+	            map: map,
+	            position: results[0].geometry.location, 
+				icon: '../images/challenge_map_icon.png'
+	        });
+		}
+	});
+	
+	$('#event_location').blur( function() {
+		var event_geocoder = new google.maps.Geocoder();
+		var event_address = $.trim(event_address = $('#event_location').val().replace(/[\t\n\r]/gi, ""));
+		    geocoder.geocode( { 'address': event_address}, function(results, status) {
+		      if (status == google.maps.GeocoderStatus.OK) {		      
+				$('#event_lat').attr('value', results[0].geometry.location.lat());
+				$('#event_lng').attr('value', results[0].geometry.location.lng());
+		      }	
+		});
+	});
+
+	$('#QR').attr('href', 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= challenge_url(@challenge)%>&choe=UTF-8');
+	$('#share').attr('href', 'mailto:?subject=[City%20Sandbox]%20<%= current_user.login%>%20has%20shared%20a%20link%20with%20you!&body=<%=challenge_url(@challenge)%>');
+	
+	$('#unfollow_user').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @challenge.user.id %>';
+		params['type'] = 'User';
+		$.get('/unfollow', params);
+		$('#unfollow_user').hide();
+		$('#follow_user').show();
+	});
+	
+	$('#follow_user').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @challenge.user.id %>';
+		params['type'] = 'User';
+		$.get('/follow', params);
+		$('#follow_user').hide();
+		$('#unfollow_user').show();
+	});
+	
+	$('#unfollow').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @challenge.id %>';
+		params['type'] = 'Challenge';
+		$.get('/unfollow', params);
+		$('#unfollow').hide();
+		$('#follow').show();
+	});
+	
+	$('#follow').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @challenge.id %>';
+		params['type'] = 'Challenge';
+		$.get('/follow', params);
+		$('#follow').hide();
+		$('#unfollow').show();
+	});
+	
+	if ('<%= @followed %>' == 'true') {
+		$('#follow').hide();
+	} else {
+		$('#unfollow').hide();
+	}
+	if ('<%= @followed_user %>' == 'true') {
+		$('#follow_user').hide();
+	} else {
+		$('#unfollow_user').hide();
+	}
+	
+	$('.vote').each( function(){
+		$(this).click( function() {
+			var params = {};
+			params['id'] = $(this).attr('name');
+			$.get('/vote', params);
+			$('.vote').each( function() {
+				$(this).hide();
+			})
+			$(this).html('Voted');
+			$(this).show();
+		});	
+	});
+	
+	$('#event_location').attr('value', address);
+	$('#event_categories_id').attr('value', '<%= @challenge.categories_id %>');
+	
+	$(window).resize(function() {
+		$('#content').css('margin-left', ($(window).width()-960)/2 + 'px');
+		$('#icon_title').css('margin-left', ($(window).width()-960)/2 + 'px');
+		$('#user_nav').css('margin-right', ($(window).width()-960)/2 + 'px');
+		$('#header_tabs').css('margin-left', ($(window).width()-960)/4 + 'px');
+	});
+	$('#content').css('margin-left', ($(window).width()-960)/2 + 'px');
+	$('#icon_title').css('margin-left', ($(window).width()-960)/2 + 'px');
+	$('#user_nav').css('margin-right', ($(window).width()-960)/2 + 'px');
+	$('#header_tabs').css('margin-left', ($(window).width()-960)/4 + 'px');
+	
+	$('.user_avatar').css('vertical-align', 'middle');
+	
+	get_count();
+	
+	$('.iframe').fancybox({
+		'width' : 320,
+		'height' : 350,
+		'autoscale': false,
+		'autoDimensions': false,
+		'titlePosition': 'outside',
+		'titleFormat': formatTitle
+	});
+	$('#fancybox-wrap').click(function () {
+		printIframe('fancybox-frame');
+	});
+});
+function printIframe(id)
+{
+    frames[0].print();
+}
+function formatTitle() {
+    return '<div id="print"><a href="javascript:;"><img src="../images/print.png" title="Print QR Code."></a></div>';
+}
+function get_count(){
+	var submission = new Date('<%= @challenge.submission_deadline.strftime("%B %d, %Y %H:%M:%S") %>');
+	var vote = new Date('<%= @challenge.vote_deadline.strftime("%B %d, %Y %H:%M:%S") %> ');
+	var now = new Date();
+	var amount = 0;
+	var deadline = '';
+	if (now < vote) {
+		if (now < submission) {
+			amount = submission.getTime() - now.getTime();
+			deadline = 'Submission';
+		} else if (now < vote) {
+			amount = vote.getTime() - now.getTime();
+			deadline = 'Vote';
+		} else {
+			return;
+		}
+
+		var vals = [0,0,0,0,0,0]; 
+		var labels = ['years', 'weeks', 'days', 'hours', 'minutes', 'seconds']
+		out = '';
+		
+		//years=0;weeks=0;days=0;hours=0;mins=0;secs=0;out="";
+		amount = Math.floor(amount/1000);//kill the "milliseconds" so just secs
+		vals[0]=Math.floor(amount/31536000);//years (no leapyear support)
+		amount=amount%31536000;
+
+		vals[1]=Math.floor(amount/604800);//weeks
+		amount=amount%604800;
+
+		vals[2]=Math.floor(amount/86400);//days
+		amount=amount%86400;
+
+		vals[3]=Math.floor(amount/3600);//hours
+		amount=amount%3600;
+
+		vals[4]=Math.floor(amount/60);//minutes
+		amount=amount%60;
+
+		vals[5]=Math.floor(amount);//seconds
+
+		var first_nonzero = -1;
+		$.each(vals, function(index, value) {
+			if (first_nonzero != -1 || value != 0) {
+				first_nonzero = index;
+				out += vals[index] + " " + ((vals[index]==1)?labels[index].substring(0, labels[index].length-1) : labels[index]) + ", ";
+			} 
+		});
+
+		out = out.substr(0,out.length-2);
+		$('#countdown').html(out + ' left till the ' + deadline + ' Deadline.');
+
+		setTimeout(function() { get_count(); }, 1000);
+	}	
+}
+</script>
+<style type="text/css">
+</style>
+<div id='content'>
+<div id='user_sidebar'>
+	<b>About <a href='/users/profile/<%= @challenge.user.id %>' class='black_link'><%= @challenge.user.login %></a></b>
+	<br>
+	<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'100x100', :alt => "User avatar" %>
+	<%= @challenge.user.picture %> 
+	<br>
+	<b>Joined:</b> <%= @challenge.user.created_at.strftime("%Y %b %d")%>
+	<br>
+	<b>Questions:</b> <%= @challenge.user.questions.length %>
+	<br>
+	<b>Responses:</b> <%= @challenge.user.response_questions.length + @challenge.user.response_challenges.length + @challenge.user.response_events.length %>
+	<br>
+	<b>Challenges:</b> <%= @challenge.user.challenges.length %>
+	<br>
+	<br>
+	<!--<b><%= link_to 'Recent Activity', summary_path, :class=>'black_link' %></b>
+	<br>-->
+	<b><a href='/messages/send_to/<%=@challenge.user.id%>' class='black_link'>Send Message</a></b>
+	<br>
+	<b><a href='javascript:;' id='unfollow_user' class='black_link'>Unfollow</a></b>
+	<b><a href='javascript:;' id='follow_user' class='black_link'>Follow</a></b>
+</div>
+<div id='main_question_content'>
+<div class='challenge_main'>
+	<span id='question_map'>
+		<div id="map_canvas"></div>
+		<%=h @challenge.location %>
+		<%= hidden_field(:challenge, :location) %>
+	</span>
+	<span id='question_title_display'>
+		<b><%= @challenge.title %></b>
+	</span>
+	<br>
+	<div id='form_links'>
+	<ul>
+		<li><b> Submission Deadline: </b> <%= @challenge.submission_deadline.strftime("%Y %b %d") %> </li>
+		<li><b> Vote Deadline: </b> <%= @challenge.vote_deadline.strftime("%Y %b %d") %> </li>
+	</ul>
+	<div id="countdown"></div>
+	<br>
+	</div>
+	<span id='question_author'>
+		<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+		<%=h @challenge.user.picture %> by <%= @challenge.user.login %> |
+		<%= @challenge.created_at.strftime("%Y %b %d") %> | <%= @category.category %> |
+		<a href='javascript:;' id='unfollow' class='black_link'>Unfollow | </a> 
+		<a href='javascript:;' id='follow' class='black_link'>Follow | </a>
+		<a href='' class='black_link' id='share'> Share </a>|
+		<%= link_to 'QR', qr_url(:format=>challenge_url(@challenge), :title=>@challenge.title), :class=>'iframe black_link'%>
+	</span>
+	<br>
+	<div id='form_links'>
+		<ul>
+		<% if @can_submit %>
+		<li><a href="#proposal_form" class="black_link" onclick='$("#proposals_tab").click();'>Add Proposal</a></li>
+		<% end %>
+		<li><a href="#response_form" class="black_link" onclick='$("#responses_tab").click();'>Add Response</a></li>
+		<li><a href="#event_form" class="black_link" onclick='$("#events_tab").click();'>Add Event</a></li>
+		</ul>
+	</div>
+</div>
+<% if @challenge.description.length > 0 %>
+	<br>
+	<div class='challenge_main'>
+		<span id='question_description'>
+			<b>Challenge Description:</b> <%= @challenge.description %> 
+		</span>
+	</div>
+<% end %>
+<% if @challenge.vote_deadline <= Time.now %>
+	<% @most_popular_proposals.each do |p| %>
+		<br>
+		<div class='entry_main'>
+			<div class='entry_author'>
+				<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'60x60', :alt => "User avatar" %>
+				<%=h p.user.picture %> 
+				<br>
+				<%=h p.user.login %>	
+				<br>
+				<%= p.created_at.strftime("%Y %b %d") %>
+				<br>
+			</div>
+			<div class='entry_title'>
+				<i>Winning Proposal:</i>
+				<br>
+				<b><%= p.title %></b>
+			</div>	
+			<div class='latest_response'>
+			    <%=h p.description %>
+			</div>
+		</div>
+	<% end %>	
+<% end %>
+<div id='tabs'>
+<br>
+<div id='tabs_menu'>	
+<ul>
+	<li><b><a href="#proposals" id='proposals_tab'>Proposals</a></b></li>
+	<li><b><a href="#responses" id='responses_tab'>Responses</a></b></li>
+	<li><b><a href="#events" id='events_tab'>Events</a></b></li>
+</ul>
+</div>
+<div id='proposals'>
+<div class='tab_body'>
+	<% @challenge.proposals.reverse_each do |r| %>
+	<div class='individual proposal_individual'>
+		<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+		<%=h r.user.picture %> 
+		<%=h r.user.login %> | 
+		<%= time_ago_in_words(r.created_at) %> ago 
+		<% if @vote == -1 %>
+			 | <a id='vote' href='javascript:;' class='vote black_link' name='<%=r.id%>'>Vote</a>
+		<% elsif @vote == r.id%>
+		<span id='vote'>
+			 | Voted
+		</span>
+		<% end %>
+		<div class='entry_title'>
+			<b><%= r.title %></b>
+		</div>	
+		<div class='latest_response'>
+		    <%=h r.description %>
+		</div>
+		<br>
+		<hr style='color:#C0C0C0'>
+	</div>
+	<% end %>
+	<div id='proposal_form'>
+	<% if @can_submit %>
+		Add Proposal
+		<br>
+		<%= form_for([@challenge, Proposal.new]) do |r| %>
+		    <p>
+			    <%= r.label :title, "Title" %>
+				<br>
+			    <%= r.text_field :title %>
+			  </p>
+			  <p>
+			    <%= r.label :description, "Description" %>
+				<br>
+			    <%= r.text_area :description, :rows=>3 %>
+			  </p>
+			  <p>
+			    <%= r.submit "Submit" %>
+			  </p>
+		<% end %>
+	<% else %>
+		<br>
+		Sorry, the submission deadline has passed. No more proposals will be accepted at this time.
+	<% end %>
+	</div>
+</div>
+</div>
+<div id='responses'>
+<div class='tab_body'>
+	<% @challenge.response_challenges.reverse_each do |r| %>
+	<div class='individual response_individual'>
+			<% if r.anonymous == 1 %>
+				<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+				<%=h r.user.picture %> 
+				Anonymous | 
+			<% else %>
+				<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+				<%=h r.user.picture %> 
+				<%=h r.user.login %> |
+			<% end %>
+			<%= time_ago_in_words(r.created_at) %> ago 
+			<div class='latest_response'>
+			    <%=h r.response %>
+			</div>
+		<br>
+		<hr>
+	</div>
+	<% end %>
+	<div id='response_form' class='individual_form'> 
+		Add Response
+		<br>
+		<%= form_for([@challenge, ResponseChallenge.new]) do |r| %>
+		    <%= r.text_area :response, :rows => 3 %>
+			<br>
+			<%= r.check_box :anonymous %>
+			<%= r.label 'Post anonymously' %>
+			<br>
+		    <%= r.submit "Submit" %>
+		<% end %>
+	</div>
+</div>
+</div>
+<div id='events'>
+<div class='tab_body'>
+	<% @challenge.events.reverse_each do |e| %>
+	<div class='individual event_individual'>
+			<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+			<%=h e.user.picture %> 
+			<%=h e.user.login %> | 
+			<%= e.created_at.strftime("%Y %b %d") %>
+		<div class='entry_title'>
+			<b><%= link_to e.title, e, :class=>'black_link' %></b>
+		</div>
+		<div class='event_date'>
+		<b> Date: </b> <%= e.time.strftime("%Y %b %d") %> </li>
+		</div>
+		<div class='latest_response'>
+		    <%=h e.description %>
+		</div>
+		<br>
+		<hr>
+	</div>
+	<% end %>
+	<div id='event_form' class='individual_form'>
+		Add Event
+		<br>
+		<%= form_for([@challenge, Event.new]) do |c| %>
+		      <%= c.hidden_field :challenge_id, :value => @challenge.id %>
+			  <%= c.hidden_field :lat %>
+			  <%= c.hidden_field :lng %>
+			  <p>
+			    <%= c.label :title, "Title" %>
+				<br>
+			    <%= c.text_field :title %>
+			  </p>
+			  <p>
+			    <%= c.label :description, "Description" %>
+				<br>
+			    <%= c.text_area :description, :rows=>3 %>
+			  </p>
+			  <p>
+				<%= c.label :location %>
+				<br>
+				<%= c.text_area :location, :rows=>2 %>
+			  </p>
+			  <p>
+			    <%= c.label :time, "Time" %><br />
+			    <%= c.datetime_select :time, :default=> 7.days.from_now %>
+			  </p>
+			  <p>
+				<%= c.label 'Categories: ' %>
+				<br>
+				<%= c.select(:categories_id, Categories.all.collect {|c| [ c.category, c.id] }, {:include_blank => 'Other'})%>
+				<br>
+			  </p>
+			  <p>
+			    <%= c.submit "Submit" %>
+			  </p>
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
+<% if @challenge.user == current_user %>
+	<%= link_to 'Edit', edit_challenge_path(@challenge), :class=>'black_link' %> |
+<% end %>
+<%= link_to 'Back To Summary', summary_path, :class=>'black_link' %>
+</div>
+</div>
+</div>

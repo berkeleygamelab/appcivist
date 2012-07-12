@@ -1,0 +1,13 @@
+<%= form_for @betauser, :action => :create, :controller => :betausers do |f|%>
+    <label> Name: </label>
+    <%= f.text_field :name, :size => 18, :id => 'name', :class=>'span3' %>
+    <label> Email: </label>
+    <%= f.text_field :email, :size => 18, :id => 'email', :class => 'span3' %>
+    <label> Affiliation: </label>
+    <%= f.text_field :affiliation, :size => 18, :id => 'affiliation', :class => 'span3' %>
+
+    <br>
+    <%= submit_tag "Apply for Beta", :class => 'btn' %>
+
+<% end %>
+

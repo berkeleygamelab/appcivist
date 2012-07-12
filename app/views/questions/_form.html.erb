@@ -1,0 +1,95 @@
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
+      type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready( function() {
+  var map;
+    var myOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+    map = new google.maps.Map(document.getElementById('form_map_canvas'), myOptions);
+
+  var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-33.8902, 151.1759),
+    new google.maps.LatLng(-33.8474, 151.2631));
+
+  var input = document.getElementById('question_location');
+  var options = {
+    bounds: defaultBounds,
+    types: ['geocode']
+  };
+
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  if ($('#question_location').val() != '') {
+    center_map(map);
+  }
+
+  $('#question_location').blur( function() {
+    center_map(map);
+  });
+
+});
+
+function center_map(map) {
+  var geocoder = new google.maps.Geocoder();
+  var address = $.trim(address = $('#question_location').val().replace(/[\t\n\r]/gi, ""));
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+      $('#question_lat').attr('value', results[0].geometry.location.lat());
+      $('#question_lng').attr('value', results[0].geometry.location.lng());
+        }
+  });
+}
+</script>
+
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.hidden_field :lat %>
+    <%= f.hidden_field :lng %>
+    <%= f.label :title %> <font size='1px'>(Character Limit: 255)</font>
+    <br>
+    <%= f.text_area :title, :rows=>2 %>
+  </p>
+  <p>
+    <%= f.label :location %> <font size='1px'>(Character Limit: 100)</font>
+    <br>
+    <%= f.text_area :location, :rows=>1, :placeholder=>"" %>
+    <br>
+    <div id="form_map_canvas"></div>
+  </p>
+  <p>
+    <%= f.label :description %> <font size='1px'>(Character Limit: 800)</font>
+    <br>
+    <%= f.text_area :description, :rows=>3 %>
+  </p>
+  <p>
+    <%= f.check_box :anonymous %>
+    <%= f.label 'Post anonymously' %>
+  </p>
+  <p>
+    <%= f.label 'Categories' %>
+    <br>
+    <%= f.select(:categories_id, Categories.all.collect {|c| [ c.category, c.id] }, {:include_blank => 'Other'})%>
+  </p>
+
+    <%= f.submit %>
+ <br>  <br>  <br>  <br>  <br>
+<% end %>
+

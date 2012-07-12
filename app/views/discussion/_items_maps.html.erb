@@ -1,0 +1,9 @@
+    <% @items.each_with_index do |item, index| %>
+<li>
+  Item Number: <%= index %>
+  <br>
+  Title: <%= item.title %>
+  <br>
+  Description: <%= item.description %>
+</li>
+  <% end %>

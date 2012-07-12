@@ -1,0 +1,292 @@
+<script type="text/javascript">
+var poly, map;
+var polygons = new Array();
+ var markers = [];
+var paths = new Array();
+var colorDumpList = new Array();
+colorDumpList.push("#FFD24D");
+colorDumpList.push("#DDFF00");
+colorDumpList.push("#00FFDD");
+colorDumpList.push("#FF00DD");
+colorDumpList.push("#FFDDAA");
+colorDumpList.push("#AADDFF");
+colorDumpList.push("#00DDFF");
+$(document).ready( function() {
+  var curiosity;
+  var params = {};
+
+  $('#mainBox')[0].onpropertychange = 'toggle_submit';
+  $('#mainBox')[0].onchange = 'toggle_submit';
+  var uluru = new google.maps.LatLng(37.8667186, -122.2533931);
+  map = new google.maps.Map(document.getElementById('mapview_map'), {
+    center: uluru,
+    zoom: 12,
+   mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  populate_markers();
+  var i = 0;
+
+<% @my_areas.each do |area| %>
+    var newPath = new google.maps.MVCArray;
+    <% area.coordinates.each do |item| %>
+    var lat = <%= h(item.lat) %>
+    var lng =<%= h(item.lng) %>
+      newPath.insertAt(newPath.length, new google.maps.LatLng(lat,lng));
+    <% end %>
+    poly = new google.maps.Polygon({
+        strokeWeight: 3,
+        fillColor: colorDumpList[i]
+      });
+      polygons.push(poly);
+      poly.setMap(null);
+      poly.setPaths(new google.maps.MVCArray([newPath]));
+      i = i + 1;
+  <% end %>
+
+});
+function addInfoWindow(marker, message) {
+            var info = message;
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: message
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
+function populate_markers()
+{ var uluru;
+  var marker;
+  var message;
+  var letter = 0;
+  <% @items.each_with_index do |item, index| %>
+      uluru = new google.maps.LatLng(<%= item.lat %>, <%= item.lng %>);
+     marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+      draggable: false,
+    title: "look at me now!"
+    });
+  message = "Title: <%= item.title %> ";
+  message += " Description <%= item.description %>";
+  message += '<%= link_to "See More", :action => "show", :controller => "questions", :id => index %>';
+  addInfoWindow(marker, message);
+  markers.push(marker);
+  letter += 1;
+  <% end %>
+}
+
+function populate_marker(entry)
+{
+
+}
+
+function populate_content(data)
+{
+  curiosity = data;
+}
+ function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+function toggle_visibility(id) {
+
+    if(document.getElementById(id).style.display == 'block') {
+       document.getElementById(id).style.display = 'none';
+     } else {
+       document.getElementById(id).style.display = 'block';
+     }
+  }
+
+function toggle_submit()
+{
+  // deal with checkboxes for categories
+  /// for popular and my and default
+
+  // check the search box
+  /// am i doing tagged areas?
+  // check box for subscriptions
+  //check box for What's Happenign
+  // figure out the page we're on
+
+  var check;
+  var params = {};
+  params['category'] = [];
+
+  if($('#mainBox')[0].value != undefined )
+  {
+      var geocoder = new google.maps.Geocoder();
+    var temp= $('#mainBox')[0].value
+
+    geocoder.geocode( { 'address': temp}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+
+        params['loc'] = results[0].geometry.location.toString();
+
+    }
+    else{
+      alert("Geocoder was not successful. Going to use default user location instead!")
+
+    }
+    });
+
+  }
+
+  params['loc'] = '37.8715926 -122.27274699999998'
+  <% @my_areas.each_with_index do |area, index| %>
+    check = $('#area<%= area.id %>')[0].checked;
+  if(check)
+  {
+    params['area_id'] = <%= area.id %>;
+  polygons[<%= index %>].setMap(map);
+  }
+else
+{
+  polygons[<%= index %>].setMap(null);
+}
+  <% end %>
+  <% @default_categories.each do |cat| %>
+     check = $('#default<%= cat.id %>')[0].checked;
+  if(check)
+  {
+    params['category'].push(<%= cat.id %>);
+  }
+  <% end %>
+  <% @popular_categories.each do |cat| %>
+    check = $('#popular<%= cat.id %>')[0].checked;
+  if(check)
+  {
+      params['category'].push(<%= cat.id %>);
+  }
+  <% end %>
+  <% @my_categories.each do |cat| %>
+    check = $('#my_categories<%= cat.id %>')[0].checked;
+  if(check)
+  {
+      params['category'].push(<%= cat.id %>);
+  }
+  <% end %>
+
+  var set = [];
+  params['types'] = [];
+  if($('#QuestionCheck')[0].checked)
+  { params['types'].push('Question');
+  }
+  if($('#ChallengeCheck')[0].checked)
+  { params['types'].push('Challenge');
+  }
+  if($('#EventCheck')[0].checked)
+  { params['types'].push('Event');
+  }
+  params["view_type"] = "map"
+  $.get('fetch', params, function(data)
+  {
+
+
+      $('#radical').html(data);
+  });
+}
+
+</script>
+	<div id="content">
+      <div class="row">
+        <div class="span12">
+	        <div id="list_banner">
+				
+	          <div class='filter_title'><h1> Activity Feed </h1></div>
+        	</div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="span8">
+            <ul class="map_view1">
+                     <li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
+                <ul class="filter_elements" style="display:block;"  id="fe1">
+                  <li>
+                 <input type="checkbox" value="Question" id="QuestionCheck" onClick="toggle_submit()">  Questions
+                  </li><li>
+                 <input type="checkbox" value="Challenge" id="ChallengeCheck" onClick="toggle_submit()">  Challenges
+                  </li><li>
+                  <input type="checkbox" value="Event" id="EventCheck" onClick="toggle_submit()"> Events
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="javascript:;" onmousedown="toggle_visibility('fe2');">Categories</a><br>
+                <ul class="filter_elements" style="display:block;" id="fe2">
+                 <% @default_categories.each do |cat| %>
+                <li>
+                   <input type="checkbox" value="<%= cat.name %>" id="default<%= cat.id %>"onClick="toggle_submit()" > <%= cat.name %>
+                </li>
+                 <% end %>
+                </ul>
+              </li>
+              <li><a href="javascript:;" onmousedown="toggle_visibility('fe3');">Popular</a><br>
+                <ul class="filter_elements" style="display:none;"  id="fe3">
+                 <% @popular_categories.each do |cat| %>
+                  <li>
+                   <input type="checkbox" value="<%= cat.name %>" id="popular<%= cat.id %>" onClick="toggle_submit()"> <%= cat.name %>
+                  </li>
+                 <% end %>
+                </ul>
+              </li>
+              <li><a href="javascript:;" onmousedown="toggle_visibility('fe4');">Personal</a><br>
+                <ul class="filter_elements" style="display:none;"  id="fe4">
+                   <% @my_categories.each do |cat| %>
+                  <li>
+                   <input type="checkbox" value="<%= cat.name %>" id="my_categories<%= cat.id %>" onClick="toggle_submit()"> <%= cat.name %>
+                  </li>
+                 <% end %>
+
+                </ul>
+              </li>
+              <li><a href="javascript:;" onmousedown="toggle_visibility('fe5');">Tagged Areas</a><br>
+                <ul class="filter_elements" style="display:none;"  id="fe5">
+                    <% @my_areas.each do |area| %>
+                  <li>
+                   <input type="checkbox" value="<%= area.title %>" id="area<%= area.id %>" onClick="toggle_submit()"> <%= area.title %>
+                  </li>
+                 <% end %>
+
+                </ul>
+              </li>
+
+            </ul>
+        </div>
+        <div class="span2">
+            <%= link_to "List view", {:controller => 'discussion', :action => 'filterNew'}, :class => 'btn' %>
+            <%= link_to "Draw maps", {:controller => 'map', :action => 'draw_map'}, :class => 'btn' %>
+            <br>
+            <b><a href="#">What's Happening</a><br>
+              <a href="#">Subscriptions</a>
+            </b>
+        </div>
+        <br><br><br>
+      </div>
+      <hr class="separator"/>
+      <div class="row">
+        <div class="span2">
+      <div id="radical">
+        <% @items.each_with_index do |item, index| %>
+    <li>
+      Item Number: <%= index %>
+      <br>
+      Title: <%= item.title %>
+      <br>
+      Description: <%= item.description %>
+    </li>
+      <% end %>
+        </div>
+
+        </div>
+        <div id="mapview_map">
+        </div>
+
+</div>

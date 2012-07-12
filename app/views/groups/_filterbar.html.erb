@@ -1,0 +1,53 @@
+<ul id="filter_menus">
+  <li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
+    <ul class="filter_elements" style="display:block;"  id="fe1">
+      <li>
+     <input type="checkbox" value="Question" id="QuestionCheck" onClick="toggle_submit()">  Questions
+      </li><li>
+     <input type="checkbox" value="Challenge" id="ChallengeCheck" onClick="toggle_submit()">  Challenges
+      </li><li>
+      <input type="checkbox" value="Event" id="EventCheck" onClick="toggle_submit()"> Events
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="javascript:;" onmousedown="toggle_visibility('fe2');">Categories</a><br>
+    <ul class="filter_elements" style="display:block;" id="fe2">
+     <% @default_categories.each do |cat| %>
+    <li>
+       <input type="checkbox" value="<%= cat.name %>" id="default<%= cat.id %>"onClick="toggle_submit()" > <%= cat.name %>
+    </li>
+     <% end %>
+    </ul>
+  </li>
+  <li><a href="javascript:;" onmousedown="toggle_visibility('fe3');">Popular</a><br>
+    <ul class="filter_elements" style="display:none;"  id="fe3">
+     <% @popular_categories.each do |cat| %>
+      <li>
+       <input type="checkbox" value="<%= cat.name %>" id="popular<%= cat.id %>" onClick="toggle_submit()"> <%= cat.name %>
+      </li>
+     <% end %>
+    </ul>
+  </li>
+  <li><a href="javascript:;" onmousedown="toggle_visibility('fe4');">Personal</a><br>
+    <ul class="filter_elements" style="display:none;"  id="fe4">
+       <% @my_categories.each do |cat| %>
+      <li>
+       <input type="checkbox" value="<%= cat.name %>" id="my_categories<%= cat.id %>" onClick="toggle_submit()"> <%= cat.name %>
+      </li>
+     <% end %>
+
+    </ul>
+  </li>
+  <li><a href="javascript:;" onmousedown="toggle_visibility('fe5');">Tagged Areas</a><br>
+    <ul class="filter_elements" style="display:none;"  id="fe5">
+        <% @my_areas.each do |area| %>
+      <li>
+       <input type="checkbox" value="<%= area.title %>" id="area<%= area.id %>" onClick="toggle_submit()"> <%= area.title %>
+      </li>
+     <% end %>
+
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,268 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	$('#tabs ul').idTabs();
+	
+	var map;
+    var myOptions = {
+    	zoom: 14,
+    	center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+    	mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+   	map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+    var geocoder = new google.maps.Geocoder();
+	var address = '<%= @event.location %>';
+	    geocoder.geocode( { 'address': address}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        map.setCenter(results[0].geometry.location);
+	        var marker = new google.maps.Marker({
+	            map: map,
+	            position: results[0].geometry.location,
+				icon: '../images/event_map_icon.png'
+	        });
+	      } else {
+	        //alert("Geocode was not successful for the following reason: " + status);
+	      }
+	});
+	$('#QR').attr('href', 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%=event_url(@event)%>&choe=UTF-8');
+	$('#share').attr('href', 'mailto:?subject=[City%20Sandbox]%20<%= current_user.login%>%20has%20shared%20a%20link%20with%20you!&body=<%=event_url(@event)%>');
+	
+	$('#unfollow_user').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @event.user.id %>';
+		params['type'] = 'User';
+		$.get('/unfollow', params);
+		$('#unfollow_user').hide();
+		$('#follow_user').show();
+	});
+	
+	$('#follow_user').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @event.user.id %>';
+		params['type'] = 'User';
+		$.get('/follow', params);
+		$('#follow_user').hide();
+		$('#unfollow_user').show();
+	});
+	
+	$('#unfollow').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @event.id %>';
+		params['type'] = 'Event';
+		$.get('/unfollow', params);
+		$('#unfollow').hide();
+		$('#follow').show();
+	});
+	
+	$('#follow').click(function(){
+		var params = {};
+		params['item_to_follow'] = '<%= @event.id %>';
+		params['type'] = 'Event';
+		$.get('/follow', params);
+		$('#follow').hide();
+		$('#unfollow').show();
+	});
+	
+	if ('<%= @followed %>' == 'true') {
+		$('#follow').hide();
+	} else {
+		$('#unfollow').hide();
+	}
+	if ('<%= @followed_user %>' == 'true') {
+		$('#follow_user').hide();
+	} else {
+		$('#unfollow_user').hide();
+	}
+	
+	$(window).resize(function() {
+		$('#content').css('margin-left', ($(window).width()-960)/2 + 'px');
+		$('#icon_title').css('margin-left', ($(window).width()-960)/2 + 'px');
+		$('#user_nav').css('margin-right', ($(window).width()-960)/2 + 'px');
+		$('#header_tabs').css('margin-left', ($(window).width()-960)/4 + 'px');
+	});
+	$('#content').css('margin-left', ($(window).width()-960)/2 + 'px');
+	$('#icon_title').css('margin-left', ($(window).width()-960)/2 + 'px');
+	$('#user_nav').css('margin-right', ($(window).width()-960)/2 + 'px');
+	$('#header_tabs').css('margin-left', ($(window).width()-960)/4 + 'px');
+	
+	$('.iframe').fancybox({
+		'width' : 320,
+		'height' : 350,
+		'autoscale': false,
+		'autoDimensions': false,
+		'titlePosition': 'outside',
+		'titleFormat': formatTitle
+	});	
+	$('#fancybox-wrap').click(function () {
+		printIframe('fancybox-frame');
+	});
+});
+function printIframe(id)
+{
+    frames[0].print();
+}
+function formatTitle() {
+    return '<div id="print"><a href="javascript:;"><img src="../images/print.png" title="Print QR Code."></a></div>';
+}
+</script>
+<style type="text/css">
+</style>
+<div id='content'>
+<div id='user_sidebar'>
+	<b>About <a href='/users/profile/<%= @event.user.id %>' class='black_link'><%= @event.user.login %></a> </b>
+	<br>
+	<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'100x100', :alt => "User avatar" %>
+	<%= @event.user.picture %> 
+	<br>
+	<b>Joined:</b> <%= @event.user.created_at.strftime("%Y %b %d")%>
+	<br>
+	<b>Questions:</b> <%= @event.user.questions.length %>
+	<br>
+	<b>Responses:</b> <%= @event.user.response_questions.length + @event.user.response_challenges.length + @event.user.response_events.length %>
+	<br>
+	<b>Challenges:</b> <%= @event.user.challenges.length %>
+	<br>
+	<br>
+	<!--<b><%= link_to 'Recent Activity', summary_path, :class=>'black_link' %></b>
+	<br>-->
+	<b><a href='/messages/send_to/<%=@event.user.id%>' class='black_link'>Send Message</a></b>
+	<br>
+	<b><a href='javascript:;' id='unfollow_user' class='black_link'>Unfollow</a></b>
+	<b><a href='javascript:;' id='follow_user' class='black_link'>Follow</a></b>
+</div>
+<div id='main_question_content'>
+<div class='event_main'>
+	<span id='question_map'>
+		<div id="map_canvas"></div>
+		<%=h @event.location %>
+	</span>
+	<span id='question_title_display'>
+		<b><%= @event.title %></b>
+	</span>
+	<br>
+	<br>
+	<span id='question_author'>
+		<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+		<%=h @event.user.picture %> by <%= @event.user.login %> |
+		<%= @event.created_at.strftime("%Y %b %d") %> | <%= @category.category %> |
+		<a href='javascript:;' id='unfollow' class='black_link'>Unfollow | </a> 
+		<a href='javascript:;' id='follow' class='black_link'>Follow | </a>
+		<a class='black_link' id='share'> Share </a>|
+		<%= link_to 'QR', qr_url(:format=>event_url(@event), :title=>@event.title), :class=>'iframe black_link'%>
+	</span>
+	<br>
+	<br>
+	<div id='form_links'>
+	<ul>
+	<li><a href="#response_form" class="black_link">Add Response</a></li>
+	</ul>
+	</div>
+</div>
+<% if @event.description.length > 0 %>
+	<br>
+	<div class='event_main'>
+		<span id='question_description'>
+			<%= @event.description %> 
+		</span>
+	</div>
+<% end %>
+<br>
+<div class='question_main' style='min-height:150px; padding: 0'>
+	<div class='entry_author'>
+		<% if @event.challenge.question.anonymous == 1 %>
+			<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'60x60', :alt => "User avatar" %>
+			<%=h @event.challenge.question.user.picture %> 
+			<br>
+			Anonymous
+			<br>
+		<% else %>
+			<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'60x60', :alt => "User avatar" %>
+			<%=h @event.challenge.question.user.picture %> 
+			<br>
+			<%=h @event.challenge.question.user.login %>
+			<br>
+		<% end %>
+		<%= @event.challenge.question.created_at.strftime("%Y %b %d") %>
+		<br>
+	</div>
+	<div class='entry_title' >
+		<b><%= link_to @event.challenge.question.title, @event.challenge.question, :class=>'black_link' %></b>
+	</div>
+	<br>
+</div>
+<br>
+<div class='challenge_main' style='min-height:150px; padding:0'>
+	<div class='entry_author'>
+		<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'60x60', :alt => "User avatar" %>
+		<%=h @event.challenge.user.picture %> 
+		<br>
+		<%=h @event.challenge.user.login %>
+		<br>
+		<%= @event.challenge.created_at.strftime("%Y %b %d") %>
+		<br>
+	</div>
+	<div class='entry_title'>
+		<b><%= link_to @event.challenge.title, @event.challenge, :class=>'black_link' %></b>
+	</div>	
+	<br>
+	<div class='latest_response'>
+	    <%=h @event.challenge.description %>
+		<div id='challenge_dates'>
+		<ul>
+			<li><b> Submission Deadline: </b> <%= @event.challenge.submission_deadline.strftime("%Y %b %d") %> </li>
+			<li><b> Vote Deadline: </b> <%= @event.challenge.vote_deadline.strftime("%Y %b %d") %> </li>
+		</ul>
+		</div>
+	</div>
+</div>
+<br>
+<div id='tabs'>
+<br>
+<div id='tabs_menu'>	
+<ul>
+	<li><b><a href="#responses">Responses</a></b></li>
+</ul>
+</div>
+<div id='responses'>
+<div class='tab_body'>
+	<% @event.response_events.reverse_each do |r| %>
+	<div class='individual response_individual'>
+			<% if r.anonymous == 1 %>
+				<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+				<%=h r.user.picture %> 
+				Anonymous | 
+			<% else %>
+				<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+				<%=h r.user.picture %> 
+				<%=h r.user.login %> |
+			<% end %>
+			<%= time_ago_in_words(r.created_at) %> ago 
+			<div class='latest_response'>
+			    <%=h r.response %>
+			</div>
+		<br>
+		<hr>
+	</div>
+	<% end %>
+	<div id='response_form' class='individual_form'> 
+		Add Response
+		<br>
+		<%= form_for([@event, ResponseEvent.new]) do |r| %>
+		    <%= r.text_area :response, :rows => 3 %>
+			<br>
+			<%= r.check_box :anonymous %>
+			<%= r.label 'Post anonymously' %>
+			<br>
+		    <%= r.submit "Submit" %>
+		<% end %>
+	</div>
+</div>
+</div>
+<br>
+<% if @event.user == current_user %>
+	<%= link_to 'Edit', edit_event_path(@event), :class=>'black_link' %> |
+<% end %>
+<%= link_to 'Back To Summary', summary_path, :class=>'black_link' %>
+</div>
+</div>
+</div>

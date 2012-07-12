@@ -1,0 +1,18 @@
+<h1> <%= @user.login %>'s Profile </h1>
+
+<% link_to "send a message" %>&nbsp;&nbsp;&nbsp; <% link_to "subscribe" %>
+<div id='radical'>
+ 	 <ol id="list_results" class="span8">
+          <br>
+		  <% @items.each do |item| %>
+        <li>
+		    single result 
+			name: <%= item["title"] %>
+			description: <%= item["description"] %>
+		  </li>
+		  <br>
+		<% end %>
+		<br> <%= will_paginate @items %> 
+
+      </ol>
+  </div>

@@ -1,0 +1,38 @@
+<style type="text/css">
+#content {
+	background-color: rgba(255, 255, 255, 0.5);
+	padding:10px;
+}
+#content table, th, td {
+	border: 1px ridge gray;
+	margin: 0;
+}
+</style>
+<div id='content'>
+<h2>Inbox</h2>
+<table style='width:50%' cellspacing='0'>
+  <tr>
+    <th style='width:25%'>Subject</th>
+    <th style='width:25%'>Body</th>
+    <th style='width:25%'>User</th>
+	<th style='width:25%'>Reply</th>
+  </tr>
+
+<% @messages.each do |x| %>
+  <tr>
+	<td>
+	 <%=h x.message.subject %>
+	</td>
+	<td>
+	 <%=h x.message.body %>
+	</td>
+	<td>
+	 <%=h x.message.user.login %>
+	</td>	
+	<td>
+		<%= link_to 'inbox/reply', :message_id => x.id %>
+	</td>
+  </tr>
+<% end %>
+</table>
+</div>

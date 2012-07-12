@@ -1,0 +1,2 @@
+class RegUser < User
+end

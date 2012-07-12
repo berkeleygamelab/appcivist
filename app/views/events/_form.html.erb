@@ -1,0 +1,93 @@
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
+      type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready( function() {
+  var map;
+    var myOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(37.87159260,-122.2727470), // Berkeley, CA
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+    map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+  var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-33.8902, 151.1759),
+    new google.maps.LatLng(-33.8474, 151.2631));
+
+  var input = document.getElementById('event_location');
+  var options = {
+    bounds: defaultBounds,
+    types: ['geocode']
+  };
+
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  if ($('#event_location').val() != '') {
+    center_map(map);
+  }
+
+  $('#event_location').blur( function() {
+    center_map(map);
+  });
+
+});
+
+function center_map(map) {
+  var geocoder = new google.maps.Geocoder();
+  var address = $.trim(address = $('#event_location').val().replace(/[\t\n\r]/gi, ""));
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+      $('#event_lat').attr('value', results[0].geometry.location.lat());
+      $('#event_lng').attr('value', results[0].geometry.location.lng());
+        }
+  });
+}
+</script>
+<%= form_for(@event) do |c| %>
+<%= c.hidden_field :lat %>
+<%= c.hidden_field :lng %>
+    <p>
+      <%= c.label :title, "Title" %>
+    <br>
+      <%= c.text_field :title %>
+    </p>
+    <p>
+      <%= c.label :description, "Description" %>
+    <br>
+      <%= c.text_area :description, :rows=>3 %>
+    </p>
+    <p>
+    <%= c.label :location %>
+    <br>
+    <%= c.text_area :location, :rows=>2 %>
+      <div id="map_canvas"></div>
+    </p>
+    <p>
+      <%= c.label :time, "Time" %><br />
+      <%= c.datetime_select :time %>
+    </p>
+  <p>
+      <%= c.label :threshold , "Threshold" %>
+    <br>
+      <%= c.text_area :minimum_to_run, :rows => 1 %>
+  </p>
+    <p>
+    <%= c.label 'Categories: ' %>
+    <br>
+      <%= submit_tag 'Create Your Event', :class => 'btn' %>
+        <%= form_tag("/categories", :method => 'post') do %>
+     <% autocomplete_field_tag 'category', '', events_autocomplete_category_name_path, :size => 75 %>
+      <% end %>
+    <br>
+    </p>
+
+    <p>
+
+    </p>
+
+<% end %>

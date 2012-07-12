@@ -1,0 +1,227 @@
+
+<script type="text/javascript">
+$(document).ready( function() {
+
+
+				load_map();
+		
+});
+
+var poly, map;
+var stateSize = 1;
+var markers = [];
+var path = new google.maps.MVCArray;
+var dumbo = new Array();
+var polygons = new Array();
+var paths = new Array();
+var stateCounter = new Array();
+function adjustSize() {
+	
+    var mylist=document.getElementById("myList");
+	stateSize =Number(mylist.options[mylist.selectedIndex].text);
+}
+
+
+function load_map() {
+	var lat = 0;
+	var lng = 0;
+	var center;
+
+	
+	var tableID = 2036527;
+	var geocoder = new google.maps.Geocoder();
+	 var uluru = new google.maps.LatLng(-25.344, 131.036);
+	map = new google.maps.Map(document.getElementById('mapview_map'), {
+	  center: uluru,
+	  zoom: 12,
+   mapTypeId: google.maps.MapTypeId.SATELLITE
+	});
+	
+    poly = new google.maps.Polygon({
+      strokeWeight: 3,
+      fillColor: '#5555FF'
+    });
+    poly.setMap(map);
+    poly.setPaths(new google.maps.MVCArray([path]));
+
+    google.maps.event.addListener(map, 'click', addPoint);		
+}
+function addPoint(event) {
+
+  var pt1 = new google.maps.LatLng(event.latLng.lat() + 0.03*stateSize, event.latLng.lng() +0.03*stateSize);
+  var pt2 = new google.maps.LatLng(event.latLng.lat() + 0.03*stateSize, event.latLng.lng() -0.03*stateSize);
+  var pt3 = new google.maps.LatLng(event.latLng.lat() - 0.03*stateSize, event.latLng.lng() -0.03*stateSize);
+  var pt4 = new google.maps.LatLng(event.latLng.lat() - 0.03*stateSize, event.latLng.lng() +0.03*stateSize);
+  var newPath = new google.maps.MVCArray; 
+  var newPoly;
+   newPoly  = new google.maps.Polygon({
+      strokeWeight: 3,
+      fillColor: '#5555FF'
+    });
+  newPoly.setMap(map);
+  newPoly.setPaths(new google.maps.MVCArray([newPath]));
+  polygons.push(newPoly);
+  paths.push(newPath);
+  newPath.insertAt(path.length, pt1);
+  newPath.insertAt(path.length, pt2);
+  newPath.insertAt(path.length, pt3);
+  newPath.insertAt(path.length, pt4);
+  
+  var marker = new google.maps.Marker({
+    position: pt1,
+    map: map,
+    draggable: true
+  });
+
+  var marker2 = new google.maps.Marker({
+    position: pt2,
+    map: map,
+    draggable: true
+  });
+
+  var marker3 = new google.maps.Marker({
+    position: pt3,
+    map: map,
+    draggable: true
+  });
+
+  var marker4 = new google.maps.Marker({
+    position: pt4,
+    map: map,
+    draggable: true
+  });
+  markers.push(marker);
+  markers.push(marker2);
+  markers.push(marker3);
+  markers.push(marker4);
+  var title = "#" + path.length.toString();
+  stateCounter.push(title);
+  marker.setTitle("#" + path.length);
+  marker2.setTitle("#" + path.length);
+  marker3.setTitle("#" + path.length);
+  marker4.setTitle("#" + path.length);
+
+  google.maps.event.addListener(marker, 'click', function() {
+    marker.setMap(null);
+    var tracker = 0;
+    for (var i = 0, I = stateCounter.length; i < I; ++i);
+    { if(stateCounter[i] == marker.getTitle())
+		{
+			tracker = i;
+		}
+     }
+     markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 paths[tracker].splice[0];
+		 paths[tracker].splice[0];
+			 paths[tracker].splice[0];
+				 paths[tracker].splice[0];
+    }
+  );
+google.maps.event.addListener(marker, 'click', function() {
+    marker.setMap(null);
+    var tracker = 0;
+    for (var i = 0, I = stateCounter.length; i < I; ++i);
+    { if(stateCounter[i] == marker.getTitle())
+		{
+			tracker = i;
+		}
+     }
+     markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 paths[tracker].splice[0];
+		 paths[tracker].splice[0];
+			 paths[tracker].splice[0];
+				 paths[tracker].splice[0];
+    }
+  );
+
+  google.maps.event.addListener(marker, 'click', function() {
+    marker.setMap(null);
+    var tracker = 0;
+    for (var i = 0, I = stateCounter.length; i < I; ++i);
+    { if(stateCounter[i] == marker.getTitle())
+		{
+			tracker = i;
+		}
+     }
+     markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 paths[tracker].splice[0];
+		 paths[tracker].splice[0];
+			 paths[tracker].splice[0];
+				 paths[tracker].splice[0];
+    }
+  );
+ google.maps.event.addListener(marker, 'click', function() {
+    marker.setMap(null);
+    var tracker = 0;
+    for (var i = 0, I = stateCounter.length; i < I; ++i);
+    { if(stateCounter[i] == marker.getTitle())
+		{
+			tracker = i;
+		}
+     }
+     markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 markers.splice(i*4, 1);
+	 paths[tracker].splice[0];
+		 paths[tracker].splice[0];
+			 paths[tracker].splice[0];
+				 paths[tracker].splice[0];
+    }
+  );
+
+}
+
+function getParameter()
+{
+	
+        var points = poly.getPath();
+        var len = points.getLength();
+        var stuff = new Array(len);
+	for(var i = 0; i < len; i++)
+	{
+           stuff[i] = path.getArray()[i].toString();
+        }
+        
+	return stuff;
+}
+
+function load()
+{
+	var words = $('#keyword').attr('value');
+	var stuff = getParameter();
+
+	$.post("draw", { coordinates: stuff, taggedArea: words},
+   function(data) {
+      alert(data);
+   });
+}
+
+
+</script>
+<div id='content'>
+<div id='mapview_map'></div>
+
+Insert Info <input type='text' class='textbox' id='keyword' size='20'>
+<button id='myButton' name="submit" onclick="load()">Submit Given Map</button>
+
+Select Size of Brush
+<select id="myList" onchange="adjustSize()">
+  <option></option>
+  <option>1</option>
+  <option>2</option>  
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+
+</div>

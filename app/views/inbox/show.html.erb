@@ -1,0 +1,64 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	$('.response_individual hr').last().remove();
+})
+</script>
+<style type="text/css">
+.message_title {
+	line-height: 2.5em;
+}
+</style>
+<div id='content'>
+<div id='user_sidebar'>
+	<% if !current_user.nil? %>
+		<b><%= current_user.login %>'s Inbox </b>
+		<br>
+		<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'100x100', :alt => "User avatar" %>
+		<%= current_user.picture %> 
+		<br>
+		<b>Joined:</b> <%= current_user.created_at.strftime("%Y %b %d")%>
+		<br>
+		<b>Questions:</b> <%= current_user.questions.length %>
+		<br>
+		<b>Responses:</b> <%= current_user.responses.length %>
+		<br>
+		<b>Challenges:</b> <%= current_user.challenges.length %>
+		<br>
+		<br>
+		<%= link_to 'Compose a Message', messages_new_path, :class=>'black_link' %>
+		<br>
+		<%= link_to 'Sent Messages', messages_sent_path, :class=>'black_link' %>
+		<br>
+		<a href="/edit_profile" class="link_logout black_link">Edit Profile</a>
+</div>
+<div id='main_question_content'>
+<div id='responses'>
+<div class='tab_body'>
+	<% @messages.each do |x| %>
+	<div class='individual response_individual'>
+	<span class='message_title'>
+	<b><%=h x.message.subject %></b>
+	</span>
+	<br>
+	<%= image_tag "../images/default_avatar.png", :class=>'user_avatar', :size=>'30x30', :alt => "User avatar" %>
+	From: 
+	<%=h x.message.user.picture %> 
+	<%=h x.message.user.login %> |
+	Sent: <%= x.message.created_at.strftime("%Y %b %d")%>
+	<br>
+	<p>
+		<%=h x.message.body %>
+	</p>
+	<%= link_to 'Reply', reply_path(x.id), :class=>'black_link' %>
+	<br>
+	<hr>
+	</div>
+	<% end %>
+  <% else %>
+    <b> PLEASE LOGIN BEFORE VIEWING THIS PAGE </b> 
+	<% end %>
+	<br>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,10 @@
+class AddVal < ActiveRecord::Migration
+  def up
+	add_column :events, :event_time, :datetime
+	remove_column :item_templates, :type
+	add_column :item_templates, :type, :string
+  end
+
+  def down
+  end
+end

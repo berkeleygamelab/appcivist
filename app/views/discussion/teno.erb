@@ -1,0 +1,62 @@
+function populate_content(data)
+{
+	curiosity = data;
+}
+function toggle_submit()
+{
+	// deal with checkboxes for categories
+	/// for popular and my and default
+	
+	// check the search box
+	/// am i doing tagged areas?
+	// check box for subscriptions
+	//check box for What's Happenign
+	// figure out the page we're on
+	
+	var check;
+	params['category'] = [];
+	<% @my_areas.each do |area| %>
+	  check = $('#area<%= area.id %>')[0].checked;
+	if(check)
+	{
+		params['area_id'] = <%= area.id %>;
+	}
+	<% end %>
+	<% @default_categories.each do |cat| %>
+	   check = $('#default<%= cat.id %>')[0].checked;
+	if(check)
+	{
+		params['category'].push(<%= cat.id %>);
+	}
+	<% end %>
+	<% @popular_categories.each do |cat| %>
+	  check = $('#popular<%= cat.id %>')[0].checked;
+	if(check)
+	{
+			params['category'].push(<%= cat.id %>);
+	}
+	<% end %>
+	<% @my_categories.each do |cat| %>
+	  check = $('#my_categories<%= cat.id %>')[0].checked;
+	if(check)
+	{
+			params['category'].push(<%= cat.id %>);
+	}
+	<% end %>
+	
+	var set = [];
+	params['types'] = [];
+	if($('#QuestionCheck')[0].checked)
+	{	params['types'].push('Question');
+	}
+	if($('#ChallengeCheck')[0].checked)
+	{	params['types'].push('Challenge');
+	}
+	if($('#EventCheck')[0].checked)
+	{	params['types'].push('Event');
+	}
+	$.get('filter', params, function(data) 
+	{
+		populate_content(data);
+	});
+}

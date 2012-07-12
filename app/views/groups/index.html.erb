@@ -1,0 +1,88 @@
+
+<script language="javascript">
+
+ function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+function toggle_visibility(id) {
+
+    if(document.getElementById(id).style.display == 'block') {
+       document.getElementById(id).style.display = 'none';
+     } else {
+       document.getElementById(id).style.display = 'block';
+     }
+  }
+
+
+</script>
+Not satisfied with the groups here? <input type='button' class='btn' value='start your own!'>Start your own!
+<div id="container">
+		
+		<div id="content">
+			<div class="row">		
+				<div id="list_banner">	
+				<div class="span10">	
+					
+					<h1> Activity Feed </h1>
+				</div>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="span4"><h5>Showing 1-10 of 100 results</h5></div>
+			</div>
+			<div class="row">
+					<ul id="group_results" class="span8">
+						<br>
+						<% @groups.each_with_index do |group, index| %>
+						<li class="row color_question" height="160px">
+
+								<div class="span1" >
+									<img src="assets/listballoon.png" class="result_balloon"/>
+									<div class="result_ordering">				
+																
+								    <%= index %>							
+									</div>
+									<img src="http://placehold.it/56x56/" class="result_img"/>
+								</div>
+								
+								<div class="span6">
+									<div class="result_title">
+									&nbsp;	
+									 <%= group.title %>
+									</div>
+									<div class="result_content">
+									<%= group.description %> 
+									Members: 
+									Projects:
+									</div>
+								</div>
+							
+						</li>
+						<% end %>
+					
+						
+						<br>
+						<img src="../oldfrontend/dummy_searchnav.png">
+					</ul>
+			
+			
+					<div class="span3 list_panel_right">
+						<img src="/assets/dummy_listmapswitch.png">
+						<br><br>
+						<img src="/assets/dummy_listmap.png">
+						<br><br>
+						
+						<%= render 'filterbar' %>
+					</div>		
+				<br><br><br>
+			</div>
+		</div>
+		
+	</div>
+
+</body>

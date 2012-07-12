@@ -1,0 +1,3 @@
+<% for city in @cities -%>
+<%= city.name %>, <%= city.country.name %> |<%= city.id %>
+<% end -%>

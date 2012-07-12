@@ -1,0 +1,16 @@
+	<dl class="response_list">
+		<% @responses.each do |response| %>
+		<dt> 
+			<%= response.score %>
+			<img src="../oldfrontend/upboat.png" align="left"/>
+			<%= response.user.name %> 
+		</dt>
+			<dd> 
+				<%= response.response %>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Permalink</a>&nbsp;&nbsp;<a href="#">Reply</a>
+			</dd>
+			
+		 <% end %>
+		
+	</dl>

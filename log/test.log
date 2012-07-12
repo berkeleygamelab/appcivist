@@ -1,0 +1,372 @@
+Unable to load followedquestion, underlying cause No such file to load -- followedquestion 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load followedquestion, underlying cause No such file to load -- followedquestion 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load followedquestion, underlying cause No such file to load -- followedquestion 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load followedquestion, underlying cause No such file to load -- followedquestion 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (1, 'poop', 7, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 999355851)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (2, 'poopy', 19, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 433638644)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (3, 'butt', 2, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 1047151611)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (4, 'cheetos', 991, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 640576610)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (5, 'cheese', 193, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 768496070)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (6, 'meese', 192, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 481228284)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (7, 'maxico', 1922, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 464183214)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (8, 's', 12, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 453955339)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (9, 'stupid', 1, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 114742677)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (10, 'samuel', 999999, '2012-02-26 02:21:11', '2012-02-26 02:21:11', 534689734)[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "challenges"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:21:11', '2012-02-26 02:21:11', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:21:11', '2012-02-26 02:21:11', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "events"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:21:11', '2012-02-26 02:21:11', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:21:11', '2012-02-26 02:21:11', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "folders"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:21:11', '2012-02-26 02:21:11', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:21:11', '2012-02-26 02:21:11', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "followedquestions"[0m
+SQLite3::SQLException: no such table: followedquestions: DELETE FROM "followedquestions"
+Unable to load followedquestion, underlying cause No such file to load -- followedquestion 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (1, 'poop', 7, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 999355851)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (2, 'poopy', 19, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 433638644)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (3, 'butt', 2, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 1047151611)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (4, 'cheetos', 991, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 640576610)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (5, 'cheese', 193, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 768496070)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (6, 'meese', 192, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 481228284)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (7, 'maxico', 1922, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 464183214)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (8, 's', 12, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 453955339)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (9, 'stupid', 1, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 114742677)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (10, 'samuel', 999999, '2012-02-26 02:23:26', '2012-02-26 02:23:26', 534689734)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "challenges"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:23:27', '2012-02-26 02:23:27', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:23:27', '2012-02-26 02:23:27', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "events"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:23:27', '2012-02-26 02:23:27', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:23:27', '2012-02-26 02:23:27', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "folders"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:23:27', '2012-02-26 02:23:27', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:23:27', '2012-02-26 02:23:27', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "followedquestions"[0m
+SQLite3::SQLException: no such table: followedquestions: DELETE FROM "followedquestions"
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (1, 'poop', 7, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 999355851)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (2, 'poopy', 19, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 433638644)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (3, 'butt', 2, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 1047151611)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (4, 'cheetos', 991, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 640576610)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (5, 'cheese', 193, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 768496070)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (6, 'meese', 192, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 481228284)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (7, 'maxico', 1922, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 464183214)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (8, 's', 12, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 453955339)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (9, 'stupid', 1, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 114742677)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (10, 'samuel', 999999, '2012-02-26 02:26:55', '2012-02-26 02:26:55', 534689734)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "challenges"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:26:55', '2012-02-26 02:26:55', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:26:55', '2012-02-26 02:26:55', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "events"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:26:55', '2012-02-26 02:26:55', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:26:55', '2012-02-26 02:26:55', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "folders"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:26:55', '2012-02-26 02:26:55', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:26:55', '2012-02-26 02:26:55', 298486374)
+Unable to load product, underlying cause No such file to load -- product 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+Unable to load user_tag, underlying cause No such file to load -- user_tag 
+
+ C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:10:in `<class:TestCase>'
+C:/Users/SAM FENDELL/Desktop/School Stuff/Spring 2012/CitySandbox/Sites/citysandbox/test/test_helper.rb:5:in `<top (required)>'
+<internal:lib/rubygems/custom_require>:29:in `require'
+<internal:lib/rubygems/custom_require>:29:in `require'
+test/unit/category_test.rb:1:in `<main>'
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (1, 'poop', 7, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 999355851)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (2, 'poopy', 19, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 433638644)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (3, 'butt', 2, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 1047151611)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (4, 'cheetos', 991, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 640576610)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (5, 'cheese', 193, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 768496070)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (6, 'meese', 192, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 481228284)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (7, 'maxico', 1922, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 464183214)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (8, 's', 12, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 453955339)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (9, 'stupid', 1, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 114742677)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "categories" ("cat_id", "cat_name", "popularity", "created_at", "updated_at", "id") VALUES (10, 'samuel', 999999, '2012-02-26 02:28:13', '2012-02-26 02:28:13', 534689734)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "challenges"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:28:13', '2012-02-26 02:28:13', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:28:13', '2012-02-26 02:28:13', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "events"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:28:13', '2012-02-26 02:28:13', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "events" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:28:13', '2012-02-26 02:28:13', 298486374)[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "folders"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:28:13', '2012-02-26 02:28:13', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "folders" ("user_id", "parent_id", "name", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', '2012-02-26 02:28:13', '2012-02-26 02:28:13', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "followed_challenges"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "followed_challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:28:13', '2012-02-26 02:28:13', 980190962)
+SQLite3::ConstraintException: followed_challenges.user_id may not be NULL: INSERT INTO "followed_challenges" ("created_at", "updated_at", "id") VALUES ('2012-02-26 02:28:13', '2012-02-26 02:28:13', 980190962)

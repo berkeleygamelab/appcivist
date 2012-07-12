@@ -1,0 +1,224 @@
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
+      type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready( function() {
+	$('#sort_by_type li').each( function () {
+		$(this).click( function() {
+			sort_by_checked = [];
+			$('#sort_by_type li :checked').each( function () {
+				sort_by_checked.push($(this).attr('value'));
+			});
+		});
+	});
+	var loc = '<% if @location != "" %> <%= @location %> <% else %> <% if current_user.nil? %> <%= @location %> <% else %> <%= current_user.location %> <% end %> <% end %>';
+	if (loc == '') {
+		$('#mapview_map').hide();
+		var defaultBounds = new google.maps.LatLngBounds(
+		  new google.maps.LatLng(-33.8902, 151.1759),
+		  new google.maps.LatLng(-33.8474, 151.2631));
+		var input = document.getElementById('city_input');
+		var options = {
+		  bounds: defaultBounds,
+		  types: ['geocode']
+		};
+
+		autocomplete = new google.maps.places.Autocomplete(input, options);
+		//$('#city_input').addClass('formatted_input');
+
+		
+		$('#city_input').bind('keypress', function(e) {
+			if (e.keyCode == 13) {
+				loc = $('#city_input').val();
+				$('#city').hide();
+				$('#mapview_map').show();
+				load_map(loc);
+			}
+		});
+	} else {
+		$('#city').hide();
+		load_map(loc);
+	}
+	$(window).resize(function() {
+		$('#content').css('margin-left', ($(window).width()-960)/2 + 'px');
+		$('#icon_title').css('margin-left', ($(window).width()-960)/2 + 'px');
+		$('#user_nav').css('margin-right', ($(window).width()-960)/2 + 'px');
+		$('#header_tabs').css('margin-left', ($(window).width()-960)/4 + 'px');
+	});
+	$('#content').css('margin-left', ($(window).width()-960)/2 + 'px');
+	$('#icon_title').css('margin-left', ($(window).width()-960)/2 + 'px');
+	$('#user_nav').css('margin-right', ($(window).width()-960)/2 + 'px');
+	$('#header_tabs').css('margin-left', ($(window).width()-960)/4 + 'px');
+});
+function load_map(loc) {
+	var lat = 0;
+	var lng = 0;
+	var center;
+	var map;
+	var tableID = 2036527;
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode( { 'address': loc}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        lat = results[0].geometry.location.lat();
+			lng = results[0].geometry.location.lng();
+			
+			center = new google.maps.LatLng(lat, lng);
+			map = new google.maps.Map(document.getElementById('mapview_map'), {
+			  center: center,
+			  zoom: 12,
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
+			
+			var fusion_layer = new google.maps.FusionTablesLayer({
+				query: {
+					select: 'Location',
+					from: tableID
+				},
+				styles: [{
+					where: "Origin = 'questions'",
+					markerOptions: {
+						iconName: "large_green"
+					}
+				}, {
+					where: "Origin = 'challenges'",
+					markerOptions: {
+						iconName: "large_blue"
+					}
+				}, {
+					where: "Origin = 'events'",
+					markerOptions: {
+						iconName: "large_red"
+					}
+				}],
+				map: map
+			});
+			
+			google.maps.event.addListener(fusion_layer, 'click', function(e) {
+				console.log(e);
+				if (e != null) {
+					var params = {};
+					params['id'] = e.row['ID'].value;
+					params['category'] = e.row['Origin'].value;
+					$.get('/map_info', params, function(entry) {
+						html_string = '';
+						html_string	+= '<div class="entry_author">';
+						if (entry['type'] == 'questions') {
+							if (entry['item']['anonymous'] == 1) {
+								html_string += '<%= image_tag "../images/default_avatar.png", :class=>"user_avatar", :size=>"60x60", :alt => "User avatar" %>'
+									+ '<br>Anonymous<br>';
+							} else {
+								html_string += '<%= image_tag "../images/default_avatar.png", :class=>"user_avatar", :size=>"60x60", :alt => "User avatar" %><br>'
+								+ entry['user']['login'] + '<br>';
+							}
+						} else {
+							html_string += '<%= image_tag "../images/default_avatar.png", :class=>"user_avatar", :size=>"60x60", :alt => "User avatar" %><br>'
+							+ entry['user']['login'] + '<br>';
+						}
+						html_string += entry['created_at_formatted']+ '<br></div>';
+						html_string += '<div class="entry_title"><br><b>'
+						link_to_entry = '/' + entry['type'] +'/' + entry['item']['id'];
+						html_string += '<a class="black_link" href="' + link_to_entry + '">' + entry['item']['title'] + '</a></b></div>';
+						html_string += '<div class="entry_stats"><ul>';
+
+						$.each(entry['stats'], function(key, value) {
+							html_string += '<li>' + value + ' ' + key;
+							html_string += (value == 1) ? '</li>' : 's</li>';
+						});
+						html_string += '</ul></div></div><br>';
+						$('#loading').html(html_string);
+					})
+					e.infoWindowHtml = '<div id="loading" style="height:125px; width:450px">Loading..</div>';
+				}
+				
+
+			
+			    //e.infoWindowHtml = "Name: " + e.row['ID'].value + "<br />";
+
+			    //if the value exists, add the content to the window
+			      //e.infoWindowHtml += "Value: " + e.row['Location'].value + "<br />";
+			});
+			
+			// var legendDiv = document.createElement('DIV');
+			// 		  	var legend = new Legend(legendDiv, map);
+			// 		  	legendDiv.index = 1;
+			// 		  	map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legendDiv);
+
+		}
+	});
+}
+// function Legend(controlDiv, map) {
+//   // Set CSS styles for the DIV containing the control
+//   // Setting padding to 5 px will offset the control
+//   // from the edge of the map
+//   controlDiv.style.padding = '5px';
+// 
+//   // Set CSS for the control border
+//   var controlUI = document.createElement('DIV');
+//   controlUI.style.backgroundColor = 'white';
+//   controlUI.style.borderStyle = 'solid';
+//   controlUI.style.borderWidth = '1px';
+//   controlUI.title = 'Legend';
+//   controlDiv.appendChild(controlUI);
+// 
+//   // Set CSS for the control text
+//   var controlText = document.createElement('DIV');
+//   controlText.style.fontFamily = 'Arial,sans-serif';
+//   controlText.style.fontSize = '12px';
+//   controlText.style.paddingLeft = '4px';
+//   controlText.style.paddingRight = '4px';
+//   
+//   // Add the text
+//   controlText.innerHTML = '<b>Butterflies*</b><br />' +
+//         '<img src="http://maps.google.com/mapfiles/ms/micons/red-dot.png" /> Battus<br />' +
+//         '<img src="http://maps.google.com/mapfiles/ms/micons/yellow-dot.png" /> Speyeria<br />' +
+//         '<img src="http://maps.google.com/mapfiles/ms/micons/green-dot.png" /> Papilio<br />' +
+//         '<img src="http://maps.google.com/mapfiles/ms/micons/blue-dot.png" /> Limenitis<br />' +
+//         '<img src="http://maps.google.com/mapfiles/ms/micons/purple-dot.png" /> Myscelia<br />' +
+//         '<small>*Data is fictional</small>';
+//   controlUI.appendChild(controlText);
+// }
+</script>
+<div id='content'>
+
+<div id='sidebar'>
+<div id='filters_content'>
+	<b>SHOW</b>
+	<ul id='sort_by_type'>
+	<li>
+	  <%= check_box_tag 'sort', 'Questions' %> Questions
+	</li>
+	<li>
+	  <%= check_box_tag 'sort', 'Challenges' %> Challenges
+	</li>
+	<li>
+	 <%= check_box_tag 'sort', 'Events' %> Events
+	</li>
+
+	</ul>
+	<br>
+	<b>KEYWORD SEARCH</b>
+	<br>
+	<%= image_tag "../images/textbox.png", :class=>'textbox' %>
+	<br><br>
+	<b>SHOW ITEMS FROM</b>
+	<br>
+	<%= image_tag "../images/textbox.png", :class=>'textbox' %>
+	<br><br>
+	<b>VIEW CATEGORIES</b>
+	<ul id='categories'>
+	<% for category in Category.find(:all) %>
+	<li>
+	  <%= check_box_tag 'category', category.id %>
+	  <%= category.name %>
+	</li>
+	<% end %>
+	</ul>
+	<br>
+	<%= check_box_tag 'uncheck', 'Uncheck All' %> Uncheck All
+</div>
+</div>
+
+<div id='mapview_map'></div>
+<div id='city'>
+	<input type='text' class='textbox' id='city_input' size='30'>
+</div>
+</div>
