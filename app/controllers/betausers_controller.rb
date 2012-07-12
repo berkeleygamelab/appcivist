@@ -47,6 +47,7 @@ class BetausersController < ApplicationController
     @betauser.affiliation = beta['affiliation']
     emailer = beta['email']
     betakey = Digest::MD5.hexdigest("Secret #{emailer}").to_s
+    betakey = betakey[0..-25]
     @betauser.betacode = betakey
     if @betauser.save
        redirect_to "/"
