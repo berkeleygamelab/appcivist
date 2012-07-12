@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   #validate :name_check
   after_create :send_confirmation
   attr_accessible :upload
-  attr_accessor :betacode
+  attr_accessor  :betacode
   
   def render_image(user)
     if user.picture != nil || user.picture != "DEFAULT"
