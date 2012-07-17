@@ -84850,3 +84850,176 @@ Served asset /oldfrontend/logo.png - 304 Not Modified (0ms)
 
 Started GET "/assets/dummy_carousel.png" for 127.0.0.1 at 2012-07-11 20:30:41 -0700
 Served asset /dummy_carousel.png - 304 Not Modified (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-07-16 21:24:06 -0700
+
+
+Started GET "/assets/activity.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:15 -0700
+Served asset /activity.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/fancybox.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /fancybox.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /home.css - 304 Not Modified (5ms)
+
+
+Started GET "/stylesheets/jquery-ui-1.8.18.custom.css" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/jquery-ui-1.8.18.custom.css"):
+  
+
+
+
+Started GET "/assets/mailbox.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /mailbox.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /twitter/bootstrap.css - 304 Not Modified (32ms)
+
+
+Started GET "/assets/inbox.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /inbox.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery-ui-1.8.18.custom.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /jquery-ui-1.8.18.custom.css - 304 Not Modified (106ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /lightbox.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/betausers.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /betausers.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/discussion.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /discussion.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /categories.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/fancybox.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /fancybox.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/navbar.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /navbar.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /questions.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/project.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:16 -0700
+Served asset /project.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /scaffolds.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/sent.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /sent.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /users.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/map.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /map.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /messages.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/groups.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /groups.css - 304 Not Modified (8ms)
+
+
+Started GET "/stylesheets/fancybox.css" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/fancybox.css"):
+  
+
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /sessions.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/stylesheet.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /stylesheet.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /user.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /style.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /welcome.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /jquery.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /jquery-ui.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/textbox.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /textbox.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery-1.7.1.min.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /jquery-1.7.1.min.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tabs.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /tabs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/stickysidebar.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /stickysidebar.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.18.custom.min.js?body=1" for 127.0.0.1 at 2012-07-16 21:24:17 -0700
+Served asset /jquery-ui-1.8.18.custom.min.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/oldfrontend/logo.png" for 127.0.0.1 at 2012-07-16 21:24:18 -0700
+Served asset /oldfrontend/logo.png - 304 Not Modified (280ms)
+
+
+Started GET "/assets/dummy_carousel.png" for 127.0.0.1 at 2012-07-16 21:24:18 -0700
+Served asset /dummy_carousel.png - 304 Not Modified (1205ms)
