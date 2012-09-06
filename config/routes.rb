@@ -18,6 +18,9 @@ Citysandbox::Application.routes.draw do
     #get '/register' => 'users#new', :as => :register
     get '/register' => 'betausers#new', :as => :register
   end
+  
+  match '/questions/response_templates/upvote' => 'responseTemplates#upvote'
+  match '/questions/response_templates/downvote' => 'responseTemplates#downvote'
 
   resources :sessions
 
@@ -66,6 +69,13 @@ Citysandbox::Application.routes.draw do
     resources :response_events, :shallow => true
     get :auto_complete_for_category_name, :on => :collection
     get :auto_complete_category_name, :on => :collection
+  end
+  
+  resources :responses do
+    get '/:id', :action => 'show', :as => :item
+  end
+  
+  resources :response_templates do
   end
 
   resources :discussion do

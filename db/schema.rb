@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608220805) do
+ActiveRecord::Schema.define(:version => 20120830072935) do
 
   create_table "activities", :force => true do |t|
     t.integer  "group_id"
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(:version => 20120608220805) do
 
   create_table "events", :force => true do |t|
     t.datetime "time"
-    t.integer  "challenge_id",   :null => false
     t.integer  "minimum_to_run"
+    t.integer  "challenge_id"
   end
 
   create_table "folders", :force => true do |t|
@@ -250,6 +250,15 @@ ActiveRecord::Schema.define(:version => 20120608220805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_id"
+  end
+
+  create_table "response_votes", :force => true do |t|
+    t.integer  "response_id"
+    t.string   "type_like"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "value"
   end
 
   create_table "sent_messages", :force => true do |t|

@@ -206,6 +206,8 @@ function toggle_submit()
             <%= link_to "Map view", {:action => "index", :controller => "map"}, :class => "btn" %>
             <%= link_to "List view", {:controller => "discussion", :action => "filterNew"}, :class => "btn" %>
             <br><br>
+            
+            <div id="form_map_canvas" style="height:200px; width:200px;"> </div>
 
 
             <ul id="filter_menus">

@@ -37,7 +37,8 @@ class QuestionsController < ApplicationController
        @resp_id = nil
      else
      @resp_id = @q.id
-     @responses = ResponseTemplate.where(:item_id => @q.producible_id).where(:parent_id => nil)
+     @responses = ResponseTemplate.where(:item_id => @q.item_template.id).where(:parent_id => nil)
+     @response = ResponseTemplate.new(:item_id => @q.item_template.id)
      end
       respond_to do |format|
         format.html # show.html.erb

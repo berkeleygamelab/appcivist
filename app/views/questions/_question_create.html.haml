@@ -33,18 +33,11 @@
       = f.label 'Post anonymously'
     .span1 
       = f.check_box :anonymous 
-  = f.submit 'Create Your Question', :class => 'btn' 
-  = f.label 'Categories' 
+  = f.label 'Categories (comma seperated)' 
        
 
-  = form_tag("/categories", :method => 'post') do
-    = autocomplete_field_tag 'category', '', questions_autocomplete_category_name_path, :size => 75
-    
-  = form_tag("/categories", :method => 'post') do 
-    = autocomplete_field_tag 'category 1', '', questions_autocomplete_category_name_path, :size => 75 
-    
-  = form_tag("/categories", :method => 'post') do 
-    = autocomplete_field_tag 'category 2', '', questions_autocomplete_category_name_path, :size => 75 
-    
+  = f.text_area :categories
+  = f.submit 'Create Your Question', :class => 'btn' 
+
   
      

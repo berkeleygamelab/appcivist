@@ -77,16 +77,13 @@ function center_map(map) {
       <%= c.text_area :minimum_to_run, :rows => 1 %>
   </p>
     <p>
-    <%= c.label 'Categories: ' %>
+    <%= c.label 'Categories: (comma seperated)' %>
     <br>
-      <%= submit_tag 'Create Your Event', :class => 'btn' %>
-        <%= form_tag("/categories", :method => 'post') do %>
-     <% autocomplete_field_tag 'category', '', events_autocomplete_category_name_path, :size => 75 %>
-      <% end %>
+     <%= c.text_area :categories , :rows => 1%>
     <br>
     </p>
-
     <p>
+      <%= submit_tag 'Create Your Event', :class => 'btn' %>
 
     </p>
 
