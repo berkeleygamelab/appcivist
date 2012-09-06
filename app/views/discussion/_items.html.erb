@@ -1,16 +1,33 @@
+<script type="text/javascript">
+	  var letter = 0;
+	  $(document).ready(function () {
+  <% @items.each do |item| %>
+      uluru = new google.maps.LatLng(<%= item.lat %>, <%= item.lng %>);
+     marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+      draggable: false,
+    title: "look at me now!"
+    });
+  markers.push(marker);
+  letter += 1;
+  <% end %>
+  });
+</script>
+
  <% @items.each_with_index do |item, index| %>
             <br>
-            <li class="row color_<%= item.producible_type %>">
-
+            <li class="row color_<%= item.producible_type %>" style="height:120px;">
+			<% urlForBackgroundPeg = return_bubble_image_for_item(item) %>
                 <div class="span1" >
-                  <img src="assets/listballoon.png" class="result_balloon"/>
-                  <div class="result_ordering">
-
+                  <div style="background-image:url('<%= urlForBackgroundPeg %>'); background-repeat:no-repeat; width:50px; padding-left:12px; padding-top:8px; height:50px; float:left;">
                     <%= index %>
                   </div>
-                  <img src="http://placehold.it/56x56/" class="result_img"/>
+                  <div style="padding-top:60px;">
+                    <img src="http://placehold.it/56x56/" />
+                  </div>
                 </div>
-                <div class="span6">
+                <div class="span6" style="float:left;">
                   <div class="result_title">
                   &nbsp;
                   <%= item.title %> -- <%= item.producible_type %>

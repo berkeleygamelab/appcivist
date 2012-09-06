@@ -7,7 +7,7 @@ class ItemTemplate < ActiveRecord::Base
   belongs_to :item, :polymorphic => true
   #has_many :categories, :through => :categoryholders
   has_many :notification
-  has_many :users, :through => :subscriptions
+  #has_many :challenge_users, :through => :subscriptions, :foreign_key => :user_id
   has_many :response_templates, :foreign_key => :item_id
   #validates :user_id, :presence => true
     validates :title, :presence => true
@@ -16,12 +16,15 @@ class ItemTemplate < ActiveRecord::Base
   scope :has_category,       lambda{ |n| { :conditions => { :categories_id => n}}}
   scope :has_title, lambda{|name| {:conditions => ["title LIKE ? OR title LIKE ? OR title LIKE ?", "% " + name + " %", name, name + " %"]}}
   scope :keyword, lambda{|key| {:conditions => ["title LIKE ? OR title LIKE ? OR title LIKE ? OR description LIKE ? OR description LIKE ? OR description LIKE ?", "% " + key + " %", key, key + " %", "% " + key + " %", key, key + " %" ]}}
-  belongs_to :user
 
-  after_save :establish_categories
+  after_create :establish_categories
 
   def establish_categories
-    Categoryholder.makeSet(user_id, categories)
+    Categoryholder.makeSet(id, categories)
+  end
+  
+  def user
+    User.where(:id => user_id).first
   end
 
   def category_id
@@ -29,6 +32,10 @@ class ItemTemplate < ActiveRecord::Base
   end
 
   def resource
+  end
+  
+  def user
+    return User.find(user_id)
   end
 
   def responses
@@ -49,15 +56,15 @@ class ItemTemplate < ActiveRecord::Base
     hash = {}
     case producible_type
       when "question"
-        hash =Question.find(item_id).generate_content
+        hash =Question.find(item_id).extra_content
       when "event"
-        hash = Event.find(item_id).generate_content
+        hash = Event.find(item_id).extra_content
       when "challenge"
-        hash = Challenge.find(item_id).generate_content
+        hash = Challenge.find(item_id).extra_content
       when "project"
-        hash = Project.find(item_id).generate_content
+        hash = Project.find(item_id).extra_content
       when "group"
-        hash = Group.find(item_id).generate_content
+        hash = Group.find(item_id).extra_content
       end
     return contentHash.merge(hash)
   end
@@ -86,7 +93,7 @@ class ItemTemplate < ActiveRecord::Base
 
     def fetch_location
       @table = ENV['csb_locations']
-      return ::FT.execute "SELECT Location FROM #{@table} WHERE ID = #{item_id} AND Type = ItemTemplate.type "
+      return ::FT.execute "SELECT Location FROM #{@table} WHERE ID = #{id} AND Type = producible_type "
     end
 
         #takes in a CSV of lat/lng
@@ -99,13 +106,13 @@ class ItemTemplate < ActiveRecord::Base
         #takes in a CSV of lat/lng and either quest, chall, or event
   def update_location(location)
       @table = ENV['csb_locations']
-      @sanity_check = ::FT.execute "SELECT rowid FROM #{@table} WHERE ID = #{who.id} AND Type = #{ItemTemplate.type} "
+      @sanity_check = ::FT.execute "SELECT rowid FROM #{@table} WHERE ID = #{who.id} AND Type = #{producible_type} "
       if @sanity_check[0] == nil
           return insert_location(location)
       end
       @rowid = @sanity_check[0][:rowid]
 
-      return ::FT.execute "UPDATE #{@table} SET Location = '#{ItemTemplate.location}' WHERE ROWID = '#{@rowid}' AND Type = #{ItemTemplate.type}"
+      return ::FT.execute "UPDATE #{@table} SET Location = '#{ItemTemplate.location}' WHERE ROWID = '#{@rowid}' AND Type = #{producible_type}"
   end
 
         #takes in a limit and typearray

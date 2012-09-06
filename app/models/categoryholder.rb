@@ -5,11 +5,20 @@ class Categoryholder < ActiveRecord::Base
     if item_id == nil or item_id < 0
       return true
     end
+    if categories.nil?
+      return true
+    end
     cats = categories.split(",")
     cats.each do |name|
       name = name.strip
-      cat = Category.create(:name => name)
-      Categoryholder.create(:item_template_id => item_template, :category_id => cat)
+      possibleCat = Category.where(:name => name).first
+      if(possibleCat == nil)
+        cat = Category.create(:name => name)
+        cat_id = cat.id
+      else
+        cat_id = possibleCat.id
+      end
+      Categoryholder.create(:item_template_id => item_id, :category_id => cat_id)
   end
  end
 end

@@ -1,0 +1,2 @@
+class ResponseVote < ActiveRecord::Base
+end

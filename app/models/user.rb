@@ -8,10 +8,11 @@ class User < ActiveRecord::Base
   has_many :categories, :through => :user_categories
   has_many :notifications
   has_many :sent_messages
+  has_many :subscriptions
   has_many :received_messages, :foreign_key => :received_by
   has_many :folders
   has_many :groups, :through => :memberships
-  #has_many :response_templates
+  has_many :response_templates
   has_many :item_templates, :through => :subscriptions
   #has_and_belongs_to_many :followees, 
 	#					  :class_name=>"user",
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
   #validate :name_check
   after_create :send_confirmation
   attr_accessible :upload
-  attr_accessor  :betacode
+  attr_accessor :betacode
   
   def render_image(user)
     if user.picture != nil || user.picture != "DEFAULT"
@@ -115,6 +116,16 @@ class User < ActiveRecord::Base
   
   def responses
     return ResponseTemplate.where(:user_id => self.id)
+  end
+  
+  def get_subscriptions_of(itemType)
+    subs = subscriptions
+    ItemTemplate.where(:id => subs.collect(&:item_template_id)).where(:producible_type => itemType)
+  end
+  
+  def get_subscription(id)
+    subs = subscriptions
+    subs.include?(id)
   end
   
 end
