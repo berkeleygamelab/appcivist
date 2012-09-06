@@ -193,23 +193,21 @@ else
 }
 
 </script>
-	<div id="content">
-      <div class="row">
-        <div class="span12">
-	        <div id="list_banner">
-				
-	          <div class='filter_title'><h1> Activity Feed </h1></div>
-        	</div>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="span8">
-            <ul class="map_view1">
-                     <li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
-                <ul class="filter_elements" style="display:block;"  id="fe1">
-                  <li>
-                 <input type="checkbox" value="Question" id="QuestionCheck" onClick="toggle_submit()">  Questions
+<div class="row">
+	<div class="span12">
+		<div id="list_banner">
+			<div class='filter_title'><h1> Activity Feed </h1></div>
+       	</div>
+    </div>
+</div>
+<br>
+<div class="row">
+	<div class="span8">
+    	<ul class="map_view1">
+        	<li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
+        <ul class="filter_elements" style="display:block;"  id="fe1">
+           	<li>
+            <input type="checkbox" value="Question" id="QuestionCheck" onClick="toggle_submit()">  Questions
                   </li><li>
                  <input type="checkbox" value="Challenge" id="ChallengeCheck" onClick="toggle_submit()">  Challenges
                   </li><li>
@@ -283,10 +281,12 @@ else
       Description: <%= item.description %>
     </li>
       <% end %>
+      <% if @items.empty? %>
+      	<li> <br> <br> </li>
+      <% end %>
         </div>
 
         </div>
-        <div id="mapview_map">
+        <div id="mapview_map" height="440px">
         </div>
 
-</div>

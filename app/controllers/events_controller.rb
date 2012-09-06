@@ -5,15 +5,23 @@ class EventsController < ApplicationController
   def show
     @sample = Event.all.pop
      @samples = @sample.kludgy_related_similar()
-     @different_samples = sample.kludgy_related_other()
+     @different_samples = @sample.kludgy_related_other()
+     
     if current_user == nil
       redirect_to home_login_url
     else
       @event = Event.find(params[:id])
-      @category = Categories.find(@event.categories_id)\
+      @item_id = @event.item_template.id
+      @response = ResponseTemplate.new(:item_id => @item_id)
+      @responses = ResponseTemplate.where(:item_id => @item_id).where(:parent_id => nil)
+      if @event.categories
+        @category = Category.where(:category => @event.categories.split(","))
+      else 
+        @category = []
+      end
 
-      @followed = current_user.followed_events.where(:event_id => params[:id]).size != 0
-      @followed_user = current_user.followed_users.where(:followed_user_id => @event.user_id).size != 0
+     # @followed = current_user.get_subscriptions_of("Event")
+     # @followed_user = current_user.followed_users.where(:followed_user_id => @event.user_id).size != 0
 
       respond_to do |format|
         format.html # show.html.erb
@@ -63,13 +71,12 @@ class EventsController < ApplicationController
     puts params
     puts "YOU AND ME AGAINST THE WORLD"
     puts params[:category]
-    puts "CATEGRY"
+    if params[:event][:challenge_id] == ""
+      params[:event][:challenge_id] = nil
+    end
     @event = Event.new(params[:event])
     puts params[:event]
     challenge_id = params[:challenge_id]
-    if challenge_id == ""
-      challenge_id = 1
-    end
     @event.challenge_id = challenge_id
     @event.user_id = current_user.id
 

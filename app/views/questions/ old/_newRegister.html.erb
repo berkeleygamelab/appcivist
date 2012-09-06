@@ -40,17 +40,11 @@
      </p>
 	<%= submit_tag 'Create Your Question', :class => 'btn' %>
      <p>
-       <%= f.label 'Categories' %>
+       <%= f.label 'Categories (comma seperated)' %>
        <br>
 
-		<%= form_tag("/categories", :method => 'post') do %>
-	 <% autocomplete_field_tag 'category', '', questions_autocomplete_category_name_path, :size => 75 %>
-		<% end %>
-		<%= form_tag("/categories", :method => 'post') do %>
-	 <% autocomplete_field_tag 'category 1', '', questions_autocomplete_category_name_path, :size => 75 %>
-		<% end %>
-		<%= form_tag("/categories", :method => 'post') do %>
-	 <% autocomplete_field_tag 'category 2', '', questions_autocomplete_category_name_path, :size => 75 %>
+		<%= f.categories do %>
+	 <% f.text_area 'categories', '', questions_autocomplete_category_name_path, :size => 75 %>
 		<% end %>
      </p>
 

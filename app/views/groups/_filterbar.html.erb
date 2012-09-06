@@ -1,3 +1,5 @@
+<%= link_to "Map view", {:action => "index", :controller => "map"}, :class => "btn" %>
+<%= link_to "List view", {:controller => "discussion", :action => "filterNew"}, :class => "btn" %>
 <ul id="filter_menus">
   <li><a href="javascript:;" onmousedown="toggle_visibility('fe1');">List By</a><br>
     <ul class="filter_elements" style="display:block;"  id="fe1">

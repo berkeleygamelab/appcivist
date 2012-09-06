@@ -206,7 +206,7 @@ def filter
     # FIX THIS THIS IS A QUICK FIX THAT IS LAZY AS HELL
     lazy_set = []
      @items.each do |lazy|
-       lazy_set += lazy.id
+       lazy_set += [lazy.id]
      end
      @items = ItemTemplate.where(:id => lazy_set)
      #END LAZY

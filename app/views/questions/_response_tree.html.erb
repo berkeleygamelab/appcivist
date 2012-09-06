@@ -1,16 +1,31 @@
-	<dl class="response_list">
-		<% @responses.each do |response| %>
-		<dt> 
+	<dl class="response_list" style="padding-left:<%= depth*15 %>px">
+		<% responses.each do |response| %>
+		<dt id="response_<%= response.id %>" > 
+			<%= link_to_function(image_tag("downvote.png"), "voteUp(#{response.id})") %>
 			<%= response.score %>
-			<img src="../oldfrontend/upboat.png" align="left"/>
-			<%= response.user.name %> 
+			<%= link_to_function(image_tag("upvote.png"), "voteDown(#{response.id})") %>
+			<%= response.user.login %> 
+			Depth: <%= depth%>
 		</dt>
 			<dd> 
 				<%= response.response %>
 				<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Permalink</a>&nbsp;&nbsp;<a href="#">Reply</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "permalink", response_url(response) %>&nbsp;&nbsp;
+				<button onclick="replyDiv(<%= response.id %>)">Reply</a>
 			</dd>
-			
-		 <% end %>
-		
+		<div class ="div6 responseForm jenkBorder" id="reply_<%= response.id %>" style="display:none; margin-left:<%= depth * 15 + 30 %>px;">
+			<h3>Start a New Response Thread</h3><br>
+			<%= form_for @response do |resp| %>
+				<p><%= resp.hidden_field(:parent_id, :value => response.id) %></p>
+				<p><%= resp.hidden_field(:item_id, :value => @question.id)%> </p>
+				<p><%= resp.label :response %></p>
+				<p><%= resp.text_area :response, :rows => 3 %></p>
+				<p> <%= submit_tag 'Reply', :class => 'btn' %></p>
+			<% end %>
+		</div>	
+		<% response_subs = response.get_replies %>
+		<% unless response_subs.empty? %>
+		  <%= render :partial => '/questions/response_tree', :locals => {:responses => response_subs, :depth => depth+1}%>
+		<% end %>
+		<% end %>
 	</dl>

@@ -3,7 +3,7 @@ class ResponseTemplate < ActiveRecord::Base
   
   belongs_to :item_template, :foreign_key => :item_id
   attr_accessible :response, :parent_id
-  #belongs_to :user, :foreign_key => :user_id
+  belongs_to :user
 
   def upvote
     self.score = self.score + 1
@@ -14,7 +14,7 @@ class ResponseTemplate < ActiveRecord::Base
   end
 
   def get_replies
-    @replies = ResponseTemplate.where("item_id = ? AND type = ? AND lft > ? AND rgt < ?", :item_id, :type, :lft, :rgt)
+    @replies = ResponseTemplate.where(:item_id => item_id).where(:parent_id => id)
   end
 
   #Notification message that tells a user he has a received a reply from another user

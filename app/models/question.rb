@@ -25,13 +25,10 @@
     
     @ft = @ft
 
-	def generate_content
+	def extra_content
 		return {"anonymous?"=>anonymous?}
 	end
 	
-	def user
-	  ItemTemplate.where(:user_id => self.user_id).where(:producible_id => self.id)
-  end
-      
+
 end
 

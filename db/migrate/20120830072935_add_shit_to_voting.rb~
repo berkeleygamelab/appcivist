@@ -1,0 +1,4 @@
+class AddShitToVoting < ActiveRecord::Migration
+  def change
+  end
+end
