@@ -1,0 +1,230 @@
+:javascript
+  var poly, map;
+  var dummySet;
+  var markers = [];
+  $(document).ready( function() {
+    var curiosity;
+    var params = {};
+  
+    $('#mainBox')[0].onpropertychange = 'toggle_submit';
+    $('#mainBox')[0].onchange = 'toggle_submit';
+    var uluru = new google.maps.LatLng(37.8667186, -122.2533931);
+    map = new google.maps.Map(document.getElementById('form_map_canvas'), {
+      center: uluru,
+      zoom: 12,
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+  
+    populate_markers();
+  
+  });
+  
+  function populate_markers()
+  { var uluru;
+    var marker;
+    var letter = 0;
+    <% @items.each do |item| %>
+        uluru = new google.maps.LatLng(<%= item.lat %>, <%= item.lng %>);
+       marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+        draggable: false,
+      title: "look at me now!"
+      });
+    markers.push(marker);
+    letter += 1;
+    <% end %>
+  }
+  
+  function populate_marker(entry)
+  {
+  
+  }
+  
+  function populate_content(data)
+  {
+    curiosity = data;
+  }
+   function toggleDiv(divid){
+      if(document.getElementById(divid).style.display == 'none'){
+        document.getElementById(divid).style.display = 'block';
+      }else{
+        document.getElementById(divid).style.display = 'none';
+      }
+    }
+  function toggle_visibility(id) {
+  
+      if(document.getElementById(id).style.display == 'block') {
+         document.getElementById(id).style.display = 'none';
+       } else {
+         document.getElementById(id).style.display = 'block';
+       }
+    }
+  
+  function toggle_submit()
+  {
+    // deal with checkboxes for categories
+    /// for popular and my and default
+  
+    // check the search box
+    /// am i doing tagged areas?
+    // check box for subscriptions
+    //check box for What's Happenign
+    // figure out the page we're on
+  
+    var check;
+    var params = {};
+    params['category'] = [];
+  
+    if($('#mainBox')[0].value != undefined )
+    {
+        var geocoder = new google.maps.Geocoder();
+      var temp= $('#mainBox')[0].value
+  
+      geocoder.geocode( { 'address': temp}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+  
+          params['loc'] = results[0].geometry.location.toString();
+  
+      }
+      else{
+        alert("Geocoder was not successful. Going to use default user location instead!")
+  
+      }
+      });
+  
+    }
+  
+    params['loc'] = '37.8715926 -122.27274699999998'
+    <% @my_areas.each do |area| %>
+      check = $('#area<%= area.id %>')[0].checked;
+    if(check)
+    {
+      params['area_id'] = <%= area.id %>;
+    }
+    <% end %>
+    <% @default_categories.each do |cat| %>
+       check = $('#default<%= cat.id %>')[0].checked;
+    if(check)
+    {
+      params['category'].push(<%= cat.id %>);
+    }
+    <% end %>
+    <% @popular_categories.each do |cat| %>
+      check = $('#popular<%= cat.id %>')[0].checked;
+    if(check)
+    {
+        params['category'].push(<%= cat.id %>);
+    }
+    <% end %>
+    <% @my_categories.each do |cat| %>
+      check = $('#my_categories<%= cat.id %>')[0].checked;
+    if(check)
+    {
+        params['category'].push(<%= cat.id %>);
+    }
+    <% end %>
+  
+    var set = [];
+    params['types'] = [];
+    if($('#QuestionCheck')[0].checked)
+    { params['types'].push('Question');
+    }
+    if($('#ChallengeCheck')[0].checked)
+    { params['types'].push('Challenge');
+    }
+    if($('#EventCheck')[0].checked)
+    { params['types'].push('Event');
+    }
+    $.get('fetch', params, function(data)
+    {
+    dummySet = data;
+    $('#radical')[0].innerHTML = data;
+    });
+  
+    }
+    
+
+.row
+  .span12
+    #list_banner
+      .filter_title
+        %h1 Activity Feed
+#content
+  .row
+    .span4
+      .filter_h5
+        %h3 Showing results
+  .row
+    %ul.discussion_list_results.span8
+      #radical
+        - @items.each_with_index do |item, index|
+          %br
+          %li{:class => item.producible_type}
+            .row
+              .span2
+                = image_tag 'http://placehold.it/130x80'
+              .span5
+                .row
+                  .span5
+                    %h3 #{item.producible_type} -- #{item['title']}
+                .row
+                  .span5
+                    #{item['description']}
+        = will_paginate(@items)
+    %br
+    .span3.listpanel_right
+      = link_to 'Map view', {:action => 'index', :controller => 'map'}, :class => 'btn'
+      = link_to 'List view', {:controller => 'discussion', :action => 'filterNew'}, :class => 'btn'
+      %br
+      %br
+      %div#form_map_canvas{:style => 'height: 200px; width: 200px;'}
+      %ul#filter_menus
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_main"}     }  
+            .expand_button 
+              List By          
+          .collapse{id:"filter_elements_main"}
+            %ul.discussion_filter_elements
+              %li
+                %input{:type => 'checkbox', :value => 'Question', :id => 'QuestionCheck', :onClick => 'toggle_submit()'} Questions
+              %li
+                %input{:type => 'checkbox', :value => 'Challenge', :id => 'ChallengeCheck', :onClick => 'toggle_submit()'} Challenges
+              %li
+                %input{:type => 'checkbox', :value => 'Event', :id => 'EventCheck', :onClick => 'toggle_submit()'} Events
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_categories"}     }  
+            .expand_button 
+              Categories        
+          .collapse{id:"filter_elements_categories"}
+            %ul.discussion_filter_elements
+              - @default_categories.each do |cat|
+                %li
+                  %input{:type => 'checkbox', :value => '#{cat.name}', :id => 'default#{cat.id}', :onClick => 'toggle_submit()'} #{cat.name}
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_categories_pop"}     }  
+            .expand_button 
+              Popular        
+          .collapse{id:"filter_elements_categories_pop"}
+            %ul.discussion_filter_elements
+              - @popular_categories.each do |cat|
+                %li
+                  %input{:type => 'checkbox', :value => '#{cat.name}', :id => 'default#{cat.id}', :onClick => 'toggle_submit()'} #{cat.name}
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_categories_my"}     }  
+            .expand_button 
+              Personal   
+          .collapse{id:"filter_elements_categories_my"}
+            %ul.discussion_filter_elements
+              - @my_categories.each do |cat|
+                %li
+                  %input{:type => 'checkbox', :value => '#{cat.name}', :id => 'default#{cat.id}', :onClick => 'toggle_submit()'} #{cat.name}
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_areas"}     }  
+            .expand_button 
+              Tagged Areas
+          .collapse{id:"filter_elements_areas"}
+            %ul.discussion_filter_elements
+              - @my_areas.each do |area|
+                %li
+                  %input{:type => 'checkbox', :value => '#{area.title}', :id => 'area#{area.id}', :onClick => 'toggle_submit()'} #{area.title}

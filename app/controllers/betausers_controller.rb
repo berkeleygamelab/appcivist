@@ -27,9 +27,9 @@ class BetausersController < ApplicationController
     @betauser = Betauser.new
     @user = User.new
   #respond_to do |format|
-  #     format.html # new.html.erb
-  #    format.json { render json: @betauser }
-#  end
+  # format.html # new.html.erb
+  # format.json { render json: @betauser }
+# end
   end
 
   # GET /betausers/1/edit
@@ -47,6 +47,7 @@ class BetausersController < ApplicationController
     @betauser.affiliation = beta['affiliation']
     emailer = beta['email']
     betakey = Digest::MD5.hexdigest("Secret #{emailer}").to_s
+    betakey = betakey[0..-25]
     @betauser.betacode = betakey
     if @betauser.save
        redirect_to "/"
