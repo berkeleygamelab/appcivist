@@ -5,7 +5,7 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 #gem 'kaminari'
-#gem 'sqlite3'
+gem 'sqlite3'
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
 gem 'fusion_tables'
