@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20120830072935) do
     t.string   "description",     :limit => 1600
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "update_time",                     :default => '2012-06-11 23:36:50'
+    t.datetime "update_time",                     :default => '2012-09-18 17:01:29'
     t.integer  "popularity",                      :default => 0
     t.integer  "item_id"
     t.string   "type"
