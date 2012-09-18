@@ -34377,3 +34377,5 @@ Migrating to AddShitToVoting (20120830072935)
  AND t.relname = 'voting_records'
  AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
  ORDER BY i.relname
+DEPRECATION WARNING: charset() is deprecated and will be removed in future versions. (called from send_confirmation at /Users/socialapplab/ergh/appcivist/app/models/user.rb:80)
+DEPRECATION WARNING: charset() is deprecated and will be removed in future versions. (called from send_confirmation at /Users/socialapplab/ergh/appcivist/app/models/user.rb:80)
