@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
-
+gem 'sqlite3', :group => [:development, :test]
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 #gem 'kaminari'
 #gem 'sqlite3'
-gem 'rails3-jquery-autocomplete'
-gem 'nifty-generators'
+#gem 'rails3-jquery-autocomplete'
+#gem 'nifty-generators'
 gem 'fusion_tables'
 gem 'imgur'
 gem 'pg'
