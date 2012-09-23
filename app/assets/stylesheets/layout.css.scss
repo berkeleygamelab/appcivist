@@ -1,0 +1,41 @@
+
+
+html, body, button, input, select, textarea, label {
+  font-family: Trebuchet, sans-serif;
+  font-size: 100%;
+  font-size: 13px;
+  -webkit-text-size-adjust: 100%;
+  ms-text-size-adjust: 100%;
+}
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+h3 {
+  font-size: 18px;
+  font-weight: normal;
+}
+h4 {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+body, #container {
+  margin: 0 auto;
+  width: 940px;
+}
+#content {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+ul {
+  list-style-type: none;
+}

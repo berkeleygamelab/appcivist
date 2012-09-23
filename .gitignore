@@ -1,5 +1,4 @@
 *.project
-*.gem
 *.rbc
 .bundle
 .config
@@ -12,6 +11,7 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+/db/*.sqlite3
 
 # YARD artifacts
 .yardoc

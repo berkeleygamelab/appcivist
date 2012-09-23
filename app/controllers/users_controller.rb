@@ -27,13 +27,13 @@ class UsersController < ApplicationController
     #params[:user][:picture] = picturePotential[0].url
     a = params[:user]
     betakey = a['betacode']
-    theemail = a['email']
-    confirm_beta = Betauser.where("email = ? AND betacode = ?", theemail, betakey)
     puts betakey
-    puts confirm_beta
+    theemail = a['email']
+    confirm_beta = Betauser.where("email = ?", theemail)
+    confirm_beta_user_key = confirm_beta[0]
     puts "IS CONFIRM_BETA TRUE??"
-    puts confirm_beta[0].nil?
-    if (!confirm_beta[0].nil?)
+    puts confirm_beta[0]['betacode'] == betakey
+    if (confirm_beta[0]['betacode'] == betakey)
       puts "WHY YES IT IS"
       upload = a['upload']
       a.delete('upload')
@@ -138,7 +138,7 @@ class UsersController < ApplicationController
 
   def picture_image(user, pictureed_file)
     puts "attempting to do shit with the image"
-    name =  pictureed_file.original_filename
+    name = pictureed_file.original_filename
 
          #create the file path
         path = File.join("tmp", name)

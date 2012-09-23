@@ -1,0 +1,85 @@
+= render :partial => 'filter_js.html.erb', :vars => [:items => @items, :default => @default_categories, :pop => @popular_categories, :myc => @my_categories, :areas => @my_areas]
+
+.row
+  .span12
+    #list_banner
+      .filter_title
+        %h1 Activity Feed
+#content
+  .row
+    .span4
+      .filter_h5
+        %h3 Showing results
+  .row
+    %ul.discussion_list_results.span8
+      #radical
+        - @items.each_with_index do |item, index|
+          %br
+          %li{:class => item.producible_type}
+            .row
+              .span2
+                = image_tag 'http://placehold.it/130x80'
+              .span5
+                .row
+                  .span5
+                    %h3 #{item.producible_type} -- #{item['title']}
+                .row
+                  .span5
+                    #{item['description']}
+        = will_paginate(@items)
+    %br
+    .span3.listpanel_right
+      = link_to 'Map view', {:action => 'index', :controller => 'map'}, :class => 'btn'
+      = link_to 'List view', {:controller => 'discussion', :action => 'filterNew'}, :class => 'btn'
+      %br
+      %br
+      %div#form_map_canvas{:style => 'height: 200px; width: 200px;'}
+      %ul#filter_menus
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_main"}     }  
+            .expand_button 
+              List By          
+          .collapse{id:"filter_elements_main"}
+            %ul.discussion_filter_elements
+              %li
+                %input{:type => 'checkbox', :value => 'Question', :id => 'QuestionCheck', :onClick => 'toggle_submit()'} Questions
+              %li
+                %input{:type => 'checkbox', :value => 'Challenge', :id => 'ChallengeCheck', :onClick => 'toggle_submit()'} Challenges
+              %li
+                %input{:type => 'checkbox', :value => 'Event', :id => 'EventCheck', :onClick => 'toggle_submit()'} Events
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_categories"}     }  
+            .expand_button 
+              Categories        
+          .collapse{id:"filter_elements_categories"}
+            %ul.discussion_filter_elements
+              - @default_categories.each do |cat|
+                %li
+                  %input{:type => 'checkbox', :value => '#{cat.name}', :id => 'default#{cat.id}', :onClick => 'toggle_submit()'} #{cat.name}
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_categories_pop"}     }  
+            .expand_button 
+              Popular        
+          .collapse{id:"filter_elements_categories_pop"}
+            %ul.discussion_filter_elements
+              - @popular_categories.each do |cat|
+                %li
+                  %input{:type => 'checkbox', :value => '#{cat.name}', :id => 'default#{cat.id}', :onClick => 'toggle_submit()'} #{cat.name}
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_categories_my"}     }  
+            .expand_button 
+              Personal   
+          .collapse{id:"filter_elements_categories_my"}
+            %ul.discussion_filter_elements
+              - @my_categories.each do |cat|
+                %li
+                  %input{:type => 'checkbox', :value => '#{cat.name}', :id => 'default#{cat.id}', :onClick => 'toggle_submit()'} #{cat.name}
+        %li
+          %a{:href=>'javascript:;', :data=>{:toggle=>"collapse", :target=>"#filter_elements_areas"}     }  
+            .expand_button 
+              Tagged Areas
+          .collapse{id:"filter_elements_areas"}
+            %ul.discussion_filter_elements
+              - @my_areas.each do |area|
+                %li
+                  %input{:type => 'checkbox', :value => '#{area.title}', :id => 'area#{area.id}', :onClick => 'toggle_submit()'} #{area.title}
