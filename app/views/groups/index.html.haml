@@ -1,0 +1,52 @@
+
+:javascript
+
+  function toggleDiv(divid){
+      if(document.getElementById(divid).style.display == 'none'){
+        document.getElementById(divid).style.display = 'block';
+      }else{
+        document.getElementById(divid).style.display = 'none';
+      }
+    }
+  function toggle_visibility(id) {
+  
+      if(document.getElementById(id).style.display == 'block') {
+         document.getElementById(id).style.display = 'none';
+       } else {
+         document.getElementById(id).style.display = 'block';
+       }
+    }
+
+
+.row
+  .span12
+    #list_banner
+      %h1 Activity Feed
+%br
+Not satisfied with the groups here? <input type='button' class='btn' value='start your own!'>
+%BR
+.row
+  .span4
+    %h5 Showing 1-10 of 100 results
+.row
+  %ul#group_results.span8
+    %br
+    - @groups.each_with_index do |group, index|
+      %li.row.color_question
+        .span1
+          = image_tag 'listballoon.png', :class => 'result_balloon'
+          .result_ordering
+            = index
+          = image_tag 'http://placehold.it/56x56', :class => 'result_img'
+        .span6
+          .result_title
+            &nbsp;
+            = group.title
+          .result_content
+            = group.description
+            Members:
+            Projects:
+    %br
+    = image_tag '../oldfrontend/dummy_searchnav.png'
+  .span3.list_panel_right
+    = render 'filterbar'

@@ -1,0 +1,50 @@
+:javascript
+  var autocomplete;
+  var input;
+  $(document).ready( function() {
+    input = $('#mainBox')[0];
+    autocomplete = new google.maps.places.Autocomplete(input);
+  });
+
+#navbar
+  .row
+    .span3
+      = link_to image_tag ('oldfrontend/logo.png', :id => 'logo'), home_path
+    .span9
+      .row
+        .span3.offset7
+          = link_to 'Register', :action => :new, :controller => :betausers
+          &nbsp;|&nbsp;
+          - if current_user.nil?
+            = link_to 'Login', :action => :new, :controller => :sessions
+          - else 
+            = link_to 'Logout', :action => :destroy, :controller => :sessions
+          %br
+          = link_to 'My inbox', :action => :show, :controller => :inbox
+          &nbsp;|&nbsp;
+          - if current_user.nil?
+            = link_to 'Profile', :controller => :users, :action => :profile, :id => 25
+          - else 
+            = link_to "Profile", :controller => :users, :action => :profile, :id => current_user.id
+      .row 
+        .navbar_exploring.span4
+          %h2 Now exploring:
+        .span3
+          %form.navbar-form.pull-left.navform
+            %input{:type => 'text', :class => 'span3', :name => 'mainBox', :value => 'Berkeley, CA'}
+      .row
+        .navbar
+          %ul.nav
+            %li
+              = link_to 'View Activity', {:controller => 'discussion', :action => 'filterNew'}
+            %li
+              = link_to 'Ask Questions', {:controller => :questions, :action => :new}
+            %li
+              = link_to 'Connect to Groups', {:controller => :groups, :action => :index}
+            %li
+              = link_to 'Post Challenges', {:controller => :challenges, :action => :challengeNew }
+            %li
+              = link_to 'Organize Events', {:controller => :events, :action => :eventNew}
+            %li
+              = link_to 'Projects', {:controller => :project, :action => :new}
+

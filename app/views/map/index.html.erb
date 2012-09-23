@@ -201,6 +201,7 @@ else
     </div>
 </div>
 <br>
+<div id="content">
 <div class="row">
 	<div class="span8">
     	<ul class="map_view1">
@@ -272,13 +273,13 @@ else
       <div class="row">
         <div class="span2">
       <div id="radical">
+      	<ul class="map_list_results">
         <% @items.each_with_index do |item, index| %>
-    <li>
-      Item Number: <%= index %>
-      <br>
-      Title: <%= item.title %>
-      <br>
-      Description: <%= item.description %>
+    <li class=<%=item.producible_type%>>
+
+      <h3><%= index %>:<%= item.title %></h3>
+
+      <%= item.description %>
     </li>
       <% end %>
       <% if @items.empty? %>
@@ -287,6 +288,7 @@ else
         </div>
 
         </div>
-        <div id="mapview_map" height="440px">
+        <div id="mapview_map">
         </div>
+</div>
 
