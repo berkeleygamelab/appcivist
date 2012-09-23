@@ -1,0 +1,57 @@
+.row
+  #challenge_leftPane.span8
+    %h1
+      = @challenge.title
+    %ul.show_options
+      %li
+        = link_to 'Subscribe', '#'
+      %li
+        = link_to 'Generate QR Code', '#'
+      %li
+        = link_to 'Email', '#'
+    = image_tag 'dummy_carousel.png', :class => 'challenge_image'
+    = image_tag 'dummy_carousel.png', :class => 'challenge_image'
+    %h3 
+      = @challenge.description 
+      This is the description of the challenge lorem ipsum dolor blah lorem ipsum dolor blah lorem ipsum dolor blah
+      %p
+      %b 13
+      more days to 
+      = link_to 'propose a solution!', '#'
+    #contentView_responses
+      %h2 Responses
+      .response_sorter
+        = link_to 'hot', 'javascript:;'
+        &nbsp;|&nbsp;
+        = link_to 'new', 'javascript:;'
+        &nbsp;|&nbsp;
+        = link_to 'controversial', 'javascript:;'
+        &nbsp;|&nbsp;
+      %ul.response_list
+        %li
+          = link_to image_tag("downvote.png"), :action => "show", :controller => "questions", :id => 1 
+          1
+          = link_to image_tag("upvote.png"), :action => "show", :controller => "questions", :id => 1
+      #challenge_post_form
+
+        %textarea{:rows => 4, :style => 'width: 95%'}
+      .span6            
+
+  .span3
+    #contentView_rightPane      
+      #contentView_op
+        %h3 Question By:
+        .row
+          = image_tag 'http://placehold.it/50x50', :class => 'span1 thumbnail'
+          .span3
+            %dl
+              %dt
+
+              %dd
+                = link_to 'Send private message', 'javascript:;'
+      %h3 
+        Related Questions in
+        .span2
+          = text_field_tag 'question_location', nil, :placeholder => 'Berkeley, CA'
+                               
+      
