@@ -76,9 +76,11 @@ end
   end
   
   def send_confirmation
-    temp_pwd = :temp_pwd
-    mail = UserMailer.signup_notification(self, self.temp_pwd)
-    mail.deliver
+    if Rails.env.production?
+      temp_pwd = :temp_pwd
+      mail = UserMailer.signup_notification(self, self.temp_pwd)
+      mail.deliver
+    end
   end
   def recent_activity
     stuff = []

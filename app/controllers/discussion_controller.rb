@@ -106,6 +106,7 @@ def filterNew
   @collection = @items
   @items =  @items.paginate(:page => params[:page], :per_page => 5)
   #uts @items
+  @items = ItemTemplate.where("id > 0").paginate(:page => params[:page], :per_page => 5)
   @item_templates = ItemTemplate.paginate(:page => params[:page], :per_page => 5)
 
 end
@@ -175,6 +176,8 @@ def filter
      end
    end
    end
+   
+   
 
 
    @keyword = params[:keyword]
@@ -194,7 +197,9 @@ def filter
      @items = @dummy.grab_circle_type(@radius, @location_to_grab, @types)
    end
 
-
+  if Rails.env.development?
+    @items = ItemTemplate.where("id > 0")
+  end
 
    if !@startDate.nil? and !@endDate.nil?
      @between = @startDate..@endDate

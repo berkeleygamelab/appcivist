@@ -34379,3 +34379,110 @@ Migrating to AddShitToVoting (20120830072935)
  ORDER BY i.relname
 DEPRECATION WARNING: charset() is deprecated and will be removed in future versions. (called from send_confirmation at /Users/socialapplab/ergh/appcivist/app/models/user.rb:80)
 DEPRECATION WARNING: charset() is deprecated and will be removed in future versions. (called from send_confirmation at /Users/socialapplab/ergh/appcivist/app/models/user.rb:80)
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "activities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_id" integer, "project_id" integer, "title" varchar(255), "location" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "betausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "affiliation" varchar(255), "betacode" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "cat_popularity" integer DEFAULT 0, "default_cat" boolean DEFAULT 'f') 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "categoryholders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_template_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "vote_deadline" datetime, "minimum_to_run" integer, "voting_deadline" datetime, "submission_deadline" datetime) 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "coordinate" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lng" varchar(255), "lat" varchar(255), "area_id" integer) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "coordinates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "location" varchar(255), "order" integer, "tagged_area_id" integer) 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "create_group_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "time" datetime, "minimum_to_run" integer, "challenge_id" integer) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "folders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255) NOT NULL, "user_id" integer NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "followed_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "challenge_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "followed_events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "event_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.9ms)[0m  CREATE TABLE "followed_questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "question_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "followed_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "followed_user_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "group_area_lookups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mapid" varchar(255), "uid" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "group_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tagged area_id" integer NOT NULL, "group_id" integer NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "picture" varchar(255), "title" varchar(255), "password" varchar(255), "description" varchar(255)) 
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "item_templates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "location" varchar(255), "cat_id" integer, "description" varchar(1600), "created_at" datetime, "updated_at" datetime, "update_time" datetime DEFAULT '2012-09-18 17:01:29', "popularity" integer DEFAULT 0, "item_id" integer, "type" varchar(255), "categories" varchar(255), "picture" varchar(255), "producible_id" integer, "producible_type" varchar(255), "user_id" integer, "lat" varchar(255), "lng" varchar(255)) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "members" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "memberships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_id" integer NOT NULL, "user_id" integer NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "message_copies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "user_id" integer, "folder_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "subject" varchar(255), "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (2.5ms)[0m  CREATE TABLE "notifications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "type" integer, "item_id" integer, "seen" boolean) 
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_id" integer, "title" varchar(255), "description" varchar(255), "purpose" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (2.5ms)[0m  CREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255), "response" varchar(255), "picture" varchar(255), "challenge_id" integer NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "anonymous" boolean) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "received_messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "received_by" integer NOT NULL, "read?" boolean DEFAULT 'f', "folder_id" integer, "sent_message_id" integer NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "response_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "challenge_id" integer NOT NULL, "user_id" integer NOT NULL, "response" varchar(1600) NOT NULL, "created_at" datetime, "updated_at" datetime, "anonymous" integer DEFAULT 0) [0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "response_events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer NOT NULL, "user_id" integer NOT NULL, "response" varchar(1600) NOT NULL, "created_at" datetime, "updated_at" datetime, "anonymous" integer DEFAULT 0) 
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "response_questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer NOT NULL, "user_id" integer NOT NULL, "response" varchar(1600) NOT NULL, "created_at" datetime, "updated_at" datetime, "anonymous" integer DEFAULT 0) [0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "response_templates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "response" varchar(255), "depth" integer, "score" integer, "parent_id" integer, "user_id" integer, "anonymous" boolean, "group_response" boolean, "created_at" datetime, "updated_at" datetime, "item_id" integer) 
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "response_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "response_id" integer, "type_like" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime, "value" integer) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "sent_messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255), "body" varchar(255), "sent_by" integer, "created_at" datetime, "group_message?" boolean, "anonymous" boolean, "group_message" boolean) 
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "item_template_id" integer NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "tagged_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cat_id" integer, "type" integer, "question_id" integer, "group_id" integer, "challenge_id" integer, "event_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (2.3ms)[0m  CREATE TABLE "user_add_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" integer, "when" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "user_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "tagged_area_id" integer NOT NULL) [0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "user_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cat_id" integer NOT NULL, "user_id" integer NOT NULL) 
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "user_subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "follower_id" integer NOT NULL, "followee_id" integer NOT NULL) [0m
+  [1m[35m (2.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(75) NOT NULL, "picture" varchar(255), "created_at" datetime, "updated_at" datetime, "email" varchar(75) DEFAULT ' ' NOT NULL, "password_digest" varchar(255), "location" varchar(255), "password" varchar(255), "type" varchar(255), "temp_pwd" varchar(255), "verified" boolean DEFAULT 'f', "lat" varchar(255), "lng" varchar(255), "temp_pw" varchar(255)) 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "proposal_id" varchar(255) NOT NULL, "user_id" integer NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "voting_records" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) 
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120830072935')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111010231912')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120225204101')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120225211423')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120225222518')[0m
+  [1m[35m (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120225223046')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120226001604')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120226002026')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311194021')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311195633')
+  [1m[36m (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311204125')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311210112')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311210354')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311231424')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120312000054')[0m
+  [1m[35m (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120312000433')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120318193823')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120318203234')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120325054143')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120326054331')
+  [1m[36m (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120328204440')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120328205833')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120329061347')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120414204810')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120414210026')[0m
+  [1m[35m (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120415224547')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120416164238')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120416170122')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120423030218')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120430033045')
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120430040001')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503030150')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503035755')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503043104')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503055027')[0m
+  [1m[35m (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120504075303')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120504084601')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120511131208')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120511131642')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120511131714')
+  [1m[36m (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120511131755')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120608220805')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120722224209')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120828221012')
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+WARNING: Can't mass-assign protected attributes: producible_type, title, location, description
+DEPRECATION WARNING: charset() is deprecated and will be removed in future versions. (called from send_confirmation at /Users/socialapplab/Documents/Aptana Studio 3 Workspace/appcivist/app/models/user.rb:80)
+DEPRECATION WARNING: charset() is deprecated and will be removed in future versions. (called from send_applicant at /Users/socialapplab/Documents/Aptana Studio 3 Workspace/appcivist/app/models/betauser.rb:7)

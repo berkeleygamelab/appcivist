@@ -1,17 +1,14 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
-#gem 'sqlite3', :group => [:development, :test]
+
 # Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'kaminari'
-gem 'koala'
-#gem 'sqlite3'
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
 gem 'fusion_tables'
 #gem 'imgur'
-gem 'pg'
 gem 'georuby'
 gem 'ap'
 gem 'crack'
@@ -38,7 +35,12 @@ gem 'jquery-rails'
 
 gem 'eventmachine'
 
-
+group :development do
+    gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 
 
 # Use unicorn as the web server
